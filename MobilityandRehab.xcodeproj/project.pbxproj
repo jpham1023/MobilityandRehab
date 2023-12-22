@@ -11,6 +11,8 @@
 		BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD472B35DB5D004C38F1 /* ContentView.swift */; };
 		BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD492B35DB61004C38F1 /* Assets.xcassets */; };
 		BE67FD4D2B35DB61004C38F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD4C2B35DB61004C38F1 /* Preview Assets.xcassets */; };
+		BE67FD542B35E1D7004C38F1 /* ExersiseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD532B35E1D7004C38F1 /* ExersiseModel.swift */; };
+		BE67FD562B35E4B3004C38F1 /* rehabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD552B35E4B3004C38F1 /* rehabViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		BE67FD472B35DB5D004C38F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BE67FD492B35DB61004C38F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE67FD4C2B35DB61004C38F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE67FD532B35E1D7004C38F1 /* ExersiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExersiseModel.swift; sourceTree = "<group>"; };
+		BE67FD552B35E4B3004C38F1 /* rehabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rehabViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */,
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
+				BE67FD532B35E1D7004C38F1 /* ExersiseModel.swift */,
+				BE67FD552B35E4B3004C38F1 /* rehabViewModel.swift */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 			);
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
+				BE67FD562B35E4B3004C38F1 /* rehabViewModel.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
+				BE67FD542B35E1D7004C38F1 /* ExersiseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
