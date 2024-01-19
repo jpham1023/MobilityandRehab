@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDZF88Ww3Udj_XaLVCUGMytrDV8hiveJl8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>28612300558</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.jhhs.6326.MobilityandRehab</string>
+	<key>PROJECT_ID</key>
+	<string>mobility-and-rehab</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mobility-and-rehab.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:28612300558:ios:033de407bbfc6d42fe115f</string>
+</dict>
+</plist>
