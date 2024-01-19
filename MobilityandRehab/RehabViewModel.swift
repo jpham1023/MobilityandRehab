@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 class viewmodel: ObservableObject{
-    @Published  var JointArray:[RegionArea] = [
-    RegionArea(Joint: "Back", Regions: "Shoulder"),
-    RegionArea(Joint: "triceps", Regions: "Shoulder"),
-    RegionArea(Joint: "Calves", Regions: "Legs")
+    @Published  var JointArray:[jointType] = [
+    jointType(Joint: "Back", Regions: "Shoulder"),
+    jointType(Joint: "triceps", Regions: "Shoulder"),
+    jointType(Joint: "Calves", Regions: "Legs")
     ]
     
     @Published var ExerciseArray: [Exercise] = [
