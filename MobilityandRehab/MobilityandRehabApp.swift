@@ -6,9 +6,14 @@
 // test - Dylan
 
 import SwiftUI
+import FirebaseCore
 
 @main
+
 struct MobilityandRehabApp: App {
+    init(){
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
