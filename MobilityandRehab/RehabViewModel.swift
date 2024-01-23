@@ -7,13 +7,14 @@
 
 import Foundation
 import SwiftUI
+import FirebaseDatabase
+import FirebaseDatabaseSwift
 
 class viewmodel: ObservableObject{
-        
-    @Published  var JointArray:[RegionArea] = [
-    RegionArea(Joint: "Back", Regions: "Shoulder"),
-    RegionArea(Joint: "triceps", Regions: "Shoulder"),
-    RegionArea(Joint: "Calves", Regions: "Legs")
+    @Published  var JointArray:[jointType] = [
+    jointType(Joint: "Back", Regions: "Shoulder"),
+    jointType(Joint: "triceps", Regions: "Shoulder"),
+    jointType(Joint: "Calves", Regions: "Legs")
     ]
     
     @Published var ExerciseArray: [Exercise] = [
@@ -24,8 +25,13 @@ class viewmodel: ObservableObject{
     
     ]
     func pullfromfirebase(){
+        let databaseref = Database.database().reference().child("Region")
+        databaseref.getData {myError,myDataSnapshot in
+            print(myDataSnapshot)
+            }
+            
+        }
         
     }
     
     
-}
