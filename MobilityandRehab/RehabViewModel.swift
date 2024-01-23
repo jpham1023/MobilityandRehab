@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class viewmodel: ObservableObject{
+        
     @Published  var JointArray:[RegionArea] = [
     RegionArea(Joint: "Back", Regions: "Shoulder"),
     RegionArea(Joint: "triceps", Regions: "Shoulder"),
@@ -22,7 +23,9 @@ class viewmodel: ObservableObject{
     Exercise(joint: "Calves", Exercise: "calf raises", video: "www.yt.com", notes: "no notes")
     
     ]
-    
+    func pullfromfirebase(){
+        
+    }
     
     
 }
