@@ -21,7 +21,7 @@ class Exercise{
     var notes: String
     
 }
-struct RegionArea: Hashable{
+struct jointType: Hashable{
     init(Joint: String, Regions: String) {
         self.Regions = Regions
         self.Joint = Joint
