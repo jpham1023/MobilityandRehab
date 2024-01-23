@@ -8,25 +8,25 @@
 import Foundation
 import SwiftUI
 
-class Exersise{
-    init(joint: String, Exersise: String, video: String, notes: String) {
+class Exercise{
+    init(joint: String, Exercise: String, video: String, notes: String) {
         self.joint = joint
-        self.Exersise = Exersise
+        self.Exercise = Exercise
         self.video = video
         self.notes = notes
     }
-    var joint:String
-    var Exersise:String
-    var video:String
-    var notes:String
+    var joint: String
+    var Exercise: String
+    var video: String
+    var notes: String
     
 }
-struct RegionArea:Hashable{
+struct jointType: Hashable{
     init(Joint: String, Regions: String) {
         self.Regions = Regions
         self.Joint = Joint
         
     }
-    var Joint:String
-    var Regions:String
+    var Joint: String
+    var Regions: String
 }
