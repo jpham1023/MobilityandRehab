@@ -24,6 +24,10 @@ class viewmodel: ObservableObject{
     Exercise(joint: "Calves", Exercise: "calf raises", video: "www.yt.com", notes: "no notes")
     
     ]
+    init(){
+        pullfromfirebase()
+    }
+    
     func pullfromfirebase(){
         let databaseref = Database.database().reference().child("Region")
         databaseref.getData {myError,myDataSnapshot in
