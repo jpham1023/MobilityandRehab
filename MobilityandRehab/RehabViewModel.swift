@@ -26,12 +26,23 @@ class viewmodel: ObservableObject{
     ]
     init(){
         pullfromfirebase()
+        
     }
     
-    func pullfromfirebase(){
+    func pullfromfirebase() {
         let databaseref = Database.database().reference().child("Region")
-        databaseref.getData {myError,myDataSnapshot in
-            print(myDataSnapshot)
+        databaseref.getData { myError,myDataSnapshot in
+        var tempJointArray: [jointType] = []
+        var tempExerciseArray: [Exercise] = []
+        print(myDataSnapshot)
+        for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
+                let regionName = region.key
+                guard let jointdictionary = region.value else {return}
+            }
+                
+            
+                    
+
             }
             
         }
