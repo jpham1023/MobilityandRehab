@@ -26,13 +26,28 @@ class RehabViewmodel: ObservableObject{
     ]
     init(){
         pullfromfirebase()
+        
     }
     
-    func pullfromfirebase(){
+    func pullfromfirebase() {
         let databaseref = Database.database().reference().child("Region")
-        databaseref.getData { myError, myDataSnapshot in
-            print(myDataSnapshot)
-            print(myError)
+        databaseref.getData { myError,myDataSnapshot in
+        var tempJointArray: [jointType] = []
+        var tempExerciseArray: [Exercise] = []
+        print(myDataSnapshot)
+        for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
+            let regionName = region.key
+            guard let jointdictionary = region.value as? [String:Any] else {return}
+            for jointNames in jointdictionary.keys{
+                guard let exerciseDictionary = jointdictionary[jointNames] as? [String:Any] else {return}
+                print(exerciseDictionary)
+            }
+                    
+            }
+                
+            
+                    
+
             }
             
         }
