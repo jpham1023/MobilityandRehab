@@ -10,7 +10,7 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-class viewmodel: ObservableObject{
+class RehabViewmodel: ObservableObject{
     @Published  var JointArray:[jointType] = [
     jointType(Joint: "Back", Regions: "Shoulder"),
     jointType(Joint: "triceps", Regions: "Shoulder"),
@@ -30,8 +30,9 @@ class viewmodel: ObservableObject{
     
     func pullfromfirebase(){
         let databaseref = Database.database().reference().child("Region")
-        databaseref.getData {myError,myDataSnapshot in
+        databaseref.getData { myError, myDataSnapshot in
             print(myDataSnapshot)
+            print(myError)
             }
             
         }

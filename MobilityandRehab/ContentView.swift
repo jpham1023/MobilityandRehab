@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+import FirebaseDatabaseSwift
 
 struct ContentView: View {
+    @ObservedObject var viewmodel = RehabViewmodel()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("text")
         }
         .padding()
     }
