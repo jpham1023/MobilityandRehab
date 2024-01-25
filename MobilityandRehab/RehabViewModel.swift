@@ -10,7 +10,7 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-class viewmodel: ObservableObject{
+class RehabViewmodel: ObservableObject{
     @Published  var JointArray:[jointType] = [
     jointType(Joint: "Back", Regions: "Shoulder"),
     jointType(Joint: "triceps", Regions: "Shoulder"),
@@ -34,15 +34,27 @@ class viewmodel: ObservableObject{
         databaseref.getData { myError,myDataSnapshot in
         var tempJointArray: [jointType] = []
         var tempExerciseArray: [Exercise] = []
-        print(myDataSnapshot)
+        //print(myDataSnapshot)
         for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
             let regionName = region.key
             guard let jointdictionary = region.value as? [String:Any] else {return}
-            for jointNames in jointdictionary.keys{
-                guard let exerciseDictionary = jointdictionary[jointNames] as? [String:Any] else {return}
+            print(jointdictionary)
+            for jointName in jointdictionary.keys{
+                guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
                 print(exerciseDictionary)
+                for exercises in exerciseDictionary{
+                    guard let exerciseName = exercises.key as? String else{return}
+                    guard let linkDictionary = exercises.value as? [String:Any] else{return}
+                    guard let link = linkDictionary["link"] else{return}
+                    guard let notes = linkDictionary["Note"] else{return}
+                    let currentExercise = Exercise(joint: jointName, Exercise: exerciseName, video: link as! String, notes: notes as! String)
+                    tempExerciseArray.append(currentExercise)
+                    let currentJoint = jointType(Joint: jointName, Regions: regionName)
+                    tempJointArray.append(currentJoint)
+                }
             }
-                    
+            self.JointArray = tempJointArray
+            self.ExerciseArray = tempExerciseArray
             }
                 
             

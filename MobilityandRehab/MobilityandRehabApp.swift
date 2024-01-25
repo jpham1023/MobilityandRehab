@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 
+
 @main
 
 struct MobilityandRehabApp: App {
