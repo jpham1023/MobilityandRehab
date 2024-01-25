@@ -36,8 +36,13 @@ class viewmodel: ObservableObject{
         var tempExerciseArray: [Exercise] = []
         print(myDataSnapshot)
         for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
-                let regionName = region.key
-                guard let jointdictionary = region.value else {return}
+            let regionName = region.key
+            guard let jointdictionary = region.value as? [String:Any] else {return}
+            for jointNames in jointdictionary.keys{
+                guard let exerciseDictionary = jointdictionary[jointNames] as? [String:Any] else {return}
+                print(exerciseDictionary)
+            }
+                    
             }
                 
             
