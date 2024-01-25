@@ -10,7 +10,7 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-class viewmodel: ObservableObject{
+class RehabViewmodel: ObservableObject{
     @Published  var JointArray:[jointType] = [
     jointType(Joint: "Back", Regions: "Shoulder"),
     jointType(Joint: "triceps", Regions: "Shoulder"),
