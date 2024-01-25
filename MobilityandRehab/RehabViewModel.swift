@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import FirebaseDatabase
+import FirebaseDatabaseSwift
 
 class viewmodel: ObservableObject{
     @Published  var JointArray:[jointType] = [
@@ -27,8 +29,13 @@ class viewmodel: ObservableObject{
     }
     
     func pullfromfirebase(){
+        let databaseref = Database.database().reference().child("Region")
+        databaseref.getData {myError,myDataSnapshot in
+            print(myDataSnapshot)
+            }
+            
+        }
         
     }
     
     
-}
