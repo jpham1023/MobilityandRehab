@@ -54,7 +54,7 @@ class RehabViewmodel: ObservableObject{
                 let currentJoint = jointType(Joint: jointName, Regions: regionName)
                 tempJointArray.append(currentJoint)
             }
-            self.tempJointArray = tempJointArray
+            self.JointArray = tempJointArray
             self.ExerciseArray = tempExerciseArray
                     
             }
