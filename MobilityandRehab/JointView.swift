@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct JointView: View{
+    @Binding var currentRegion: String
+    @EnvironmentObject var viewObject: RehabViewmodel
     var body: some View{
         Text("Hi")
         
