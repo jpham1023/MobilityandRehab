@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		476EED4E2B6D4F8A008D8824 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
 		BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD472B35DB5D004C38F1 /* ContentView.swift */; };
 		BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD492B35DB61004C38F1 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityandRehabApp.swift; sourceTree = "<group>"; };
 		BE67FD472B35DB5D004C38F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
 				BE67FD532B35E1D7004C38F1 /* ExerciseModel.swift */,
 				BE67FD552B35E4B3004C38F1 /* RehabViewModel.swift */,
+				476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
 				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
@@ -236,6 +239,7 @@
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
 				BE67FD562B35E4B3004C38F1 /* RehabViewModel.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
+				476EED4E2B6D4F8A008D8824 /* ExerciseListView.swift in Sources */,
 				BE67FD542B35E1D7004C38F1 /* ExerciseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct ExerciseList: View {
+    
+    
+    
+    var body: some View {
+        Text("eg")
+    }
+}
