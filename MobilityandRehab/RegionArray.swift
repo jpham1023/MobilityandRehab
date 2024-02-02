@@ -9,5 +9,14 @@ import Foundation
 import SwiftUI
 
 struct RegionNames{
-    
+    func appendRegions(viewobject:RehabViewmodel) -> [String]{
+        var regionName:[String] = []
+        let jointArray = viewobject.JointArray
+        for name in jointArray{
+            if regionName.contains(name.Regions) == false{
+                regionName.append(name.Regions)
+            }
+        }
+        return regionName
+    }
 }
