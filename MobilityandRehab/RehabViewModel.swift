@@ -38,10 +38,8 @@ class RehabViewmodel: ObservableObject{
         for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
             let regionName = region.key
             guard let jointdictionary = region.value as? [String:Any] else {return}
-            print(jointdictionary)
             for jointName in jointdictionary.keys{
                 guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
-                print(exerciseDictionary)
                 for exercises in exerciseDictionary{
                     guard let exerciseName = exercises.key as? String else{return}
                     guard let linkDictionary = exercises.value as? [String:Any] else{return}

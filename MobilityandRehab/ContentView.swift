@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewobject:RehabViewmodel
+    @EnvironmentObject var viewobject: RehabViewmodel
     var body: some View {
         Text("Regions")
         let regions = RegionNames()
