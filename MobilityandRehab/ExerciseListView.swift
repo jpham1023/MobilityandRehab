@@ -9,10 +9,11 @@ import Foundation
 import SwiftUI
 
 struct ExerciseList: View {
-    
-    
-    
+    @EnvironmentObject var viewobject: RehabViewmodel
+    @Binding var currentJoint:  String
     var body: some View {
-        Text("eg")
+        NavigationStack {
+            
+        }
     }
 }
