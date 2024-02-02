@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExerciseView: View {
+    @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View {
         Text("hello")
     }
