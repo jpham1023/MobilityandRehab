@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
-import FirebaseDatabase
-import FirebaseDatabaseSwift
 
 struct ContentView: View {
-    @ObservedObject var viewobject = RehabViewmodel()
+    @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View {
-        VStack {
-            Text("text")
+        Text("Regions")
+        let regions = RegionNames()
+        let nameArray = regions.appendRegions(viewobject: viewobject)
+        NavigationStack{
+            
         }
-        .padding()
     }
 }
 
