@@ -10,7 +10,7 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 
 struct ContentView: View {
-    @ObservedObject var viewmodel = RehabViewmodel()
+    @ObservedObject var viewobject = RehabViewmodel()
     var body: some View {
         VStack {
             Text("text")

@@ -16,8 +16,10 @@ struct MobilityandRehabApp: App {
         FirebaseApp.configure()
     }
     var body: some Scene {
+        @StateObject var viewobject:RehabViewModel = RehabViewmodel()
         WindowGroup {
             ContentView()
+                .environmentObject(viewobject)
         }
     }
 }
