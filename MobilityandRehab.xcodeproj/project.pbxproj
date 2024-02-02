@@ -128,8 +128,8 @@
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
 				4A4E217C2B6D51C100A40944 /* JointView.swift */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
-				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
+				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 			);
 			path = MobilityandRehab;
 			sourceTree = "<group>";
