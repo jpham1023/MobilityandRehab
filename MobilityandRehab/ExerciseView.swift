@@ -14,7 +14,14 @@ struct ExerciseView: View {
     @Binding var exerciseName: String
     
     var body: some View {
-        Text("hello")
+        List{
+            ForEach(viewobject.ExerciseArray, id:\.Exercise){
+                Currentexercise in
+                if Currentexercise.Exercise == exerciseName{
+                    
+                }
+            }
+        }
     }
 }
 
