@@ -13,6 +13,17 @@ struct ExerciseList: View {
     @Binding var currentJoint:  String
     var body: some View {
         NavigationStack {
+            List {
+                ForEach(viewobject.ExerciseArray, id: \.Exercise) {
+                    currentExercise in
+                    if currentExercise.joint == currentJoint {
+                        @State var exercisename = currentExercise.Exercise
+                        
+                        
+                    
+                    }
+                }
+            }
             
         }
     }
