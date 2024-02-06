@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		476EED4E2B6D4F8A008D8824 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */; };
+		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
 		6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947C0412B6D52E0003F5874 /* RegionArray.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
 		6947C0412B6D52E0003F5874 /* RegionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionArray.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,12 +124,12 @@
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
 				BE67FD532B35E1D7004C38F1 /* ExerciseModel.swift */,
 				BE67FD552B35E4B3004C38F1 /* RehabViewModel.swift */,
-				476EED4D2B6D4F8A008D8824 /* ExerciseListView.swift */,
-				4A4E217C2B6D51C100A40944 /* JointView.swift */,
-				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
-				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
-				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
+				4A4E217C2B6D51C100A40944 /* JointView.swift */,
+				476EED4F2B6D586A008D8824 /* ExerciseList.swift */,
+				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
+				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
+				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 			);
 			path = MobilityandRehab;
 			sourceTree = "<group>";
@@ -246,10 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */,
+				476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */,
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
 				BE67FD562B35E4B3004C38F1 /* RehabViewModel.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
-				476EED4E2B6D4F8A008D8824 /* ExerciseListView.swift in Sources */,
 				BE67FD542B35E1D7004C38F1 /* ExerciseModel.swift in Sources */,
 				D90C06342B6D52E700667E60 /* ExerciseView.swift in Sources */,
 				4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */,
