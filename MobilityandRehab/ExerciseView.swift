@@ -19,6 +19,7 @@ struct ExerciseView: View {
                 Currentexercise in
                 if Currentexercise.Exercise == exerciseName{
                     Text(Currentexercise.video)
+                        .frame(width: 300, height: 600)
                     Text(Currentexercise.notes)
                 }
             }
