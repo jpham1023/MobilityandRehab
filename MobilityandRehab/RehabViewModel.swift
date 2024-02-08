@@ -11,19 +11,9 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 
 class RehabViewmodel: ObservableObject{
-    @Published  var JointArray:[jointType] = [
-    jointType(Joint: "Back", Regions: "Shoulder"),
-    jointType(Joint: "triceps", Regions: "Shoulder"),
-    jointType(Joint: "Calves", Regions: "Legs")
-    ]
+    @Published  var JointArray:[jointType] = []
     
-    @Published var ExerciseArray: [Exercise] = [
-    Exercise(joint: "Back", Exercise: "Extentions", video: "www.yt.com", notes: "notes"),
-    Exercise(joint: "Back", Exercise: "Raises", video: "www.youtube.com", notes: "Dont cave shoulders"),
-    Exercise(joint: "triceps", Exercise: "pullups", video: "www.yt.com", notes: "none"),
-    Exercise(joint: "Calves", Exercise: "calf raises", video: "www.yt.com", notes: "no notes")
-    
-    ]
+    @Published var ExerciseArray: [Exercise] = []
     init(){
         pullfromfirebase()
     }
