@@ -18,7 +18,8 @@ struct ExerciseView: View {
             ForEach(viewobject.ExerciseArray, id:\.Exercise){
                 Currentexercise in
                 if Currentexercise.Exercise == exerciseName{
-                    
+                    Text(Currentexercise.video)
+                    Text(Currentexercise.notes)
                 }
             }
         }
