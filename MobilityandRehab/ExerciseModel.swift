@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class Exercise{
+class Exercise {
     init(joint: String, Exercise: String, video: String, notes: String) {
         self.joint = joint
         self.Exercise = Exercise
