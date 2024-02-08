@@ -17,6 +17,7 @@ struct JointView: View{
                 ForEach(viewObject.JointArray, id:\.Joint){
                     currentJoint in
                     HStack{
+                        Text(currentJoint.Joint)
                         @State var jointName = currentJoint.Joint
                         NavigationLink(""){
                             ExerciseList(currentJoint: $jointName)
