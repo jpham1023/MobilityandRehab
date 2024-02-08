@@ -19,7 +19,8 @@ struct ContentView: View {
                     currentRegion in
                     @State var regionname = currentRegion
                     HStack{
-                        
+                        NavigationLink(regionname){
+                            JointView(currentRegion: $regionname)}
                     }
                 }
             }

@@ -9,8 +9,23 @@ import Foundation
 import SwiftUI
 
 struct JointView: View{
+    @Binding var currentRegion: String
+    @EnvironmentObject var viewObject: RehabViewmodel
     var body: some View{
-        Text("Hi")
+        NavigationStack{
+            List(){
+                ForEach(viewObject.JointArray, id:\.Joint){
+                    currentJoint in
+                    HStack{
+                        Text(currentJoint.Joint)
+                        @State var jointName = currentJoint.Joint
+                        NavigationLink(""){
+                            ExerciseList(currentJoint: $jointName)
+                        }
+                    }
+                }
+            }
+        }
         
     }
 }
