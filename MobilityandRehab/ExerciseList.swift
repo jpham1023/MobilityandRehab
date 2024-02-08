@@ -18,13 +18,15 @@ struct ExerciseList: View {
                     currentExercise in
                     if currentExercise.joint == currentJoint {
                         @State var exercisename = currentExercise.Exercise
-                        
-                        
-                    
+                        HStack {
+                            Text(exercisename)
+                            NavigationLink("") {
+                                ExerciseView(exerciseName: $exercisename)
+                            }
+                        }
                     }
                 }
             }
-            
         }
     }
 }
