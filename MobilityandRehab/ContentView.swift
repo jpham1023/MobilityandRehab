@@ -14,6 +14,15 @@ struct ContentView: View {
         let regions = RegionNames()
         let nameArray = regions.appendRegions(viewobject: viewobject)
         NavigationStack{
+            List{
+                ForEach(nameArray,id:\.self){
+                    currentRegion in
+                    @State var regionname = currentRegion
+                    HStack{
+                        
+                    }
+                }
+            }
             
         }
     }

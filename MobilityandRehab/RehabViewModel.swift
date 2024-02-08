@@ -26,7 +26,6 @@ class RehabViewmodel: ObservableObject{
     ]
     init(){
         pullfromfirebase()
-        
     }
     
     func pullfromfirebase() {
@@ -34,16 +33,16 @@ class RehabViewmodel: ObservableObject{
         databaseref.getData { myError,myDataSnapshot in
         var tempJointArray: [jointType] = []
         var tempExerciseArray: [Exercise] = []
-        //print(myDataSnapshot)
         for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
             let regionName = region.key
             guard let jointdictionary = region.value as? [String:Any] else {return}
             for jointName in jointdictionary.keys{
                 guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
                 for exercises in exerciseDictionary{
+                    print(exercises)
                     guard let exerciseName = exercises.key as? String else{return}
                     guard let linkDictionary = exercises.value as? [String:Any] else{return}
-                    guard let link = linkDictionary["link"] else{return}
+                    guard let link = linkDictionary["Link"] else{return}
                     guard let notes = linkDictionary["Note"] else{return}
                     let currentExercise = Exercise(joint: jointName, Exercise: exerciseName, video: link as! String, notes: notes as! String)
                     tempExerciseArray.append(currentExercise)
@@ -57,7 +56,7 @@ class RehabViewmodel: ObservableObject{
                     
             }
            self.JointArray = tempJointArray
-        self.ExerciseArray = tempExerciseArray     
+        self.ExerciseArray = tempExerciseArray
             
                     
 

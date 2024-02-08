@@ -16,7 +16,12 @@ struct JointView: View{
             List(){
                 ForEach(viewObject.JointArray, id:\.Joint){
                     currentJoint in
-                    
+                    HStack{
+                        @State var jointName = currentJoint.Joint
+                        NavigationLink(""){
+                            ExerciseList(currentJoint: $jointName)
+                        }
+                    }
                 }
             }
         }
