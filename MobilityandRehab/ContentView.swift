@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewobject: RehabViewmodel
     var body: some View {
         Text("Regions")
         let regions = RegionNames()
-        let nameArray = regions.appendRegions(viewobject: viewobject)
+        let nameArray = regions.appendRegions()
         NavigationStack{
             List{
                 ForEach(nameArray,id:\.self){
