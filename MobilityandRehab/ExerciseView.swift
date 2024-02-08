@@ -19,6 +19,7 @@ struct ExerciseView: View {
                 Currentexercise in
                 if Currentexercise.Exercise == exerciseName{
                     Text(Currentexercise.video)
+                    Text(Currentexercise.notes)
                 }
             }
         }
