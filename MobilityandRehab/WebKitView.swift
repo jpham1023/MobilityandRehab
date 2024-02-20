@@ -10,10 +10,9 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable{
-    
+    let videoID: String
 }
 
 
 
 
-let videoID: String
