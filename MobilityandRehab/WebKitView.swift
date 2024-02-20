@@ -11,6 +11,11 @@ import WebKit
 
 struct WebView: UIViewRepresentable{
     let videoID: String
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        return webView
+    }
 }
 
 
