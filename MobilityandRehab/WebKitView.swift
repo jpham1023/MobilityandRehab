@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+import WebKit
+
+struct WebView: UIViewRepresentable{
+    
+}

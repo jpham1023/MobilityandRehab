@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
+		47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC74A22B850AE600740A81 /* WebKitView.swift */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
 		6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947C0412B6D52E0003F5874 /* RegionArray.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
+		47CC74A22B850AE600740A81 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
 		6947C0412B6D52E0003F5874 /* RegionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionArray.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */,
 				6947C0412B6D52E0003F5874 /* RegionArray.swift */,
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
+				47CC74A22B850AE600740A81 /* WebKitView.swift */,
 				BE67FD532B35E1D7004C38F1 /* ExerciseModel.swift */,
 				BE67FD552B35E4B3004C38F1 /* RehabViewModel.swift */,
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
@@ -247,6 +250,7 @@
 			files = (
 				6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */,
 				476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */,
+				47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */,
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
 				BE67FD562B35E4B3004C38F1 /* RehabViewModel.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
