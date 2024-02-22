@@ -11,7 +11,7 @@ import SwiftUI
 struct ExerciseView: View {
     
     @EnvironmentObject var viewobject:RehabViewmodel
-    @Binding var exerciseName: String
+    var exerciseName: String
     
     var body: some View {
         List{

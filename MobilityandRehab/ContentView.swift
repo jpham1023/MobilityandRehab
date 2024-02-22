@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View {
         Text("Regions")
-        let regions = RegionNames()
-        let nameArray = regions.appendRegions()
+        let nameArray = viewobject.regionArray
         NavigationStack{
             List{
                 ForEach(nameArray,id:\.self){
                     currentRegion in
-                    @State var regionname = currentRegion
                     HStack{
-                        NavigationLink(regionname){
-                            JointView(currentRegion: $regionname)}
+                        NavigationLink(destination: JointView(currentRegion: currentRegion)){
+                            Text(currentRegion)
+                            }
                     }
                 }
             }

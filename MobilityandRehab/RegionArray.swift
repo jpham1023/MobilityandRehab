@@ -9,15 +9,15 @@ import Foundation
 import SwiftUI
 
 struct RegionNames{
-    func appendRegions() -> [String]{
-        @EnvironmentObject var viewobject:RehabViewmodel
-        var regionName:[String] = []
-        let jointArray = viewobject.JointArray
-        for name in jointArray{
-            if regionName.contains(name.Regions) == false{
-                regionName.append(name.Regions)
-            }
-        }
-        return regionName
-    }
+//    func appendRegions() -> [String]{
+//        @EnvironmentObject var viewobject:RehabViewmodel
+//        var regionName:[String] = []
+//        let jointArray = viewobject.JointArray
+//        for name in jointArray{
+//            if regionName.contains(name.Regions) == false{
+//                regionName.append(name.Regions)
+//            }
+//        }
+//        return regionName
+//    }
 }
