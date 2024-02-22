@@ -10,12 +10,6 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable{
-    let videoID: String
-    
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        return webView
-    
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let youtubeURL = "https://www.youtube.com/embed/\(videoID)?playsinline=1"
         if let url = URL(string: youtubeURL){
@@ -23,8 +17,14 @@ struct WebView: UIViewRepresentable{
             uiView.load(request)
         }
     }
+    
+    let videoID: String
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        return webView
+        
+    }
+    
+    
 }
-
-
-
-
