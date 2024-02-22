@@ -19,9 +19,8 @@ struct ExerciseView: View {
                 Currentexercise in
                 if Currentexercise.Exercise == exerciseName{
                     Text(Currentexercise.Exercise)
-                        .frame(width: 300, height: 600)
                     WebView(videoID: Currentexercise.videoId)
-                        .frame(width: 300, height: 600)
+                        .frame(height: 600)
                     Text(Currentexercise.notes)
                     
                 }

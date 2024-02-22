@@ -34,7 +34,6 @@ class RehabViewmodel: ObservableObject{
             for jointName in jointdictionary.keys{
                 guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
                 for exercises in exerciseDictionary{
-                    print(exercises)
                     let exerciseName = exercises.key
                     guard let linkDictionary = exercises.value as? [String:Any] else{return}
                     guard let link = linkDictionary["Link"] else{return}
