@@ -18,9 +18,10 @@ struct ExerciseList: View {
                     currentExercise in
                     if currentExercise.joint == currentJoint {
                         HStack {
-                            Text(currentExercise.Exercise)
-                            NavigationLink("") {
-                                ExerciseView(exerciseName: currentExercise.Exercise)
+                            NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
+                                Text(currentExercise.Exercise)
+                                    .font(.system(size:100))
+                                
                             }
                         }
                     }
