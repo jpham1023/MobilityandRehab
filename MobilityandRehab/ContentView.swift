@@ -19,7 +19,10 @@ struct ContentView: View {
                     HStack{
                         NavigationLink(destination: JointView(currentRegion: currentRegion)){
                             Text(currentRegion)
+                                .font(.system(size:100))
+                                .font(.title)
                             }
+                        .frame(height:150)
                     }
                 }
             }
