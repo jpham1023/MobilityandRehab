@@ -9,16 +9,19 @@ import Foundation
 import SwiftUI
 
 class Exercise {
-    init(joint: String, Exercise: String, video: String, notes: String) {
+    init(joint: String, Exercise: String, video: String, notes: String, videoID: String) {
         self.joint = joint
         self.Exercise = Exercise
         self.video = video
         self.notes = notes
+        self.videoId = videoID
+        
     }
     var joint: String
     var Exercise: String
     var video: String
     var notes: String
+    var videoId:String
     
 }
 struct jointType: Hashable{

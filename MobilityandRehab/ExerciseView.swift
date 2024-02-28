@@ -18,9 +18,17 @@ struct ExerciseView: View {
             ForEach(viewobject.ExerciseArray, id:\.Exercise){
                 Currentexercise in
                 if Currentexercise.Exercise == exerciseName{
-                    Text(Currentexercise.video)
-                        .frame(width: 300, height: 600)
+                    Text(Currentexercise.Exercise)
+                        .font(.system(size:50))
+                    HStack{
+                        Spacer()
+                        WebView(videoID: Currentexercise.videoId)
+                            .frame(width: 375, height: 600)
+                        Spacer()
+                    }
                     Text(Currentexercise.notes)
+                        .font(.system(size:50))
+                    
                 }
             }
         }

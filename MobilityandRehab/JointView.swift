@@ -18,15 +18,15 @@ struct JointView: View{
                     currentJoint in
                     if currentJoint.Regions == currentRegion{
                         HStack{
-                            Text(currentJoint.Joint)
-                            NavigationLink(""){
-                                ExerciseList(currentJoint: currentJoint.Joint)
+                            
+                            NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
+                                Text(currentJoint.Joint)
+                                    .font(.custom("subheadline", size: 100))
+                            }
                             }
                         }
                     }
                 }
             }
-            
         }
     }
-}
