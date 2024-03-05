@@ -20,6 +20,7 @@ struct ExerciseView: View {
                 if Currentexercise.Exercise == exerciseName{
                     Text(Currentexercise.Exercise)
                         .font(.system(size:50))
+                        .foregroundStyle(.orange)
                     HStack{
                         Spacer()
                         WebView(videoID: Currentexercise.videoId)
