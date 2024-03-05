@@ -14,23 +14,28 @@ struct ExerciseView: View {
     var exerciseName: String
     
     var body: some View {
-        List{
-            ForEach(viewobject.ExerciseArray, id:\.Exercise){
-                Currentexercise in
-                if Currentexercise.Exercise == exerciseName{
-                    Text(Currentexercise.Exercise)
-                        .font(.system(size:50))
-                    HStack{
-                        Spacer()
-                        WebView(videoID: Currentexercise.videoId)
-                            .frame(width: 375, height: 600)
-                        Spacer()
+        VStack{
+            List{
+                ForEach(viewobject.ExerciseArray, id:\.Exercise){
+                    Currentexercise in
+                    if Currentexercise.Exercise == exerciseName{
+                        Text(Currentexercise.Exercise)
+                            .font(.system(size:50))
+                            .foregroundStyle(.orange)
+                            .multilineTextAlignment(.center)
+                            .frame(width:1000)
+                        HStack{
+                            Spacer()
+                            WebView(videoID: Currentexercise.videoId)
+                                .frame(width: 375, height: 600)
+                            Spacer()
+                        }
+                        Text(Currentexercise.notes)
+                            .font(.system(size:50))
                     }
-                    Text(Currentexercise.notes)
-                        .font(.system(size:50))
-                    
                 }
             }
+            
         }
     }
 }
