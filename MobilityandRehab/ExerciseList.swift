@@ -20,13 +20,24 @@ struct ExerciseList: View {
                         HStack {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
-                                    .font(.system(size:100))
+                                
+                             //       .font(.custom("BADABB__", size: 75))
+                    
+                                    
+                            
                                 
                             }
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.orange)
+                                .ignoresSafeArea()
             }
+           
         }
+       
+
     }
 }
+

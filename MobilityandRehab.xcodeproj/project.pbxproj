@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470DA75C2B9789AD00E57911 /* badaboom_bb in Resources */ = {isa = PBXBuildFile; fileRef = 470DA75B2B9789AD00E57911 /* badaboom_bb */; };
 		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
 		47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC74A22B850AE600740A81 /* WebKitView.swift */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		470DA75B2B9789AD00E57911 /* badaboom_bb */ = {isa = PBXFileReference; lastKnownFileType = folder; name = badaboom_bb; path = ../../../Downloads/badaboom_bb; sourceTree = "<group>"; };
 		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		47CC74A22B850AE600740A81 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
 				4A4E217C2B6D51C100A40944 /* JointView.swift */,
 				476EED4F2B6D586A008D8824 /* ExerciseList.swift */,
+				470DA75B2B9789AD00E57911 /* badaboom_bb */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
@@ -163,6 +166,7 @@
 				BE67FD4D2B35DB61004C38F1 /* Preview Assets.xcassets in Resources */,
 				BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */,
 				D91E60CC2B5ADEA8005ED4CB /* GoogleService-Info.plist in Resources */,
+				470DA75C2B9789AD00E57911 /* badaboom_bb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
