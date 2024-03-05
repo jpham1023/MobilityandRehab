@@ -32,11 +32,22 @@ struct ExerciseView: View {
                         }
                         Text(Currentexercise.notes)
                             .font(.system(size:50))
+                            .foregroundStyle(.orange)
+                    }
+                    HStack{
+                        Text(Currentexercise.notes)
+                            .font(.system(size:50))
+                        Spacer()
+                        Image("HerseyLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height:100)
+                        
                     }
                 }
             }
             
         }
     }
+    
 }
-
