@@ -32,6 +32,7 @@ struct ExerciseView: View {
                         }
                         Text(Currentexercise.notes)
                             .font(.system(size:50))
+                            .foregroundStyle(.orange)
                     }
                 }
             }
