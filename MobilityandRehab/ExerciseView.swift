@@ -21,6 +21,9 @@ struct ExerciseView: View {
                     if Currentexercise.Exercise == exerciseName{
                         Text(Currentexercise.Exercise)
                             .font(.system(size:50))
+                            .foregroundStyle(.orange)
+                            .multilineTextAlignment(.center)
+                            .frame(width:1000)
                         HStack{
                             Spacer()
                             WebView(videoID: Currentexercise.videoId)
@@ -29,6 +32,16 @@ struct ExerciseView: View {
                         }
                         Text(Currentexercise.notes)
                             .font(.system(size:50))
+                            .foregroundStyle(.orange)
+                    }
+                    HStack{
+                        Text(Currentexercise.notes)
+                            .font(.system(size:50))
+                        Spacer()
+                        Image("HerseyLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height:100)
                         
                     }
                 }
@@ -37,4 +50,5 @@ struct ExerciseView: View {
             
         }
     }
+    
 }

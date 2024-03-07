@@ -21,13 +21,12 @@ struct JointView: View{
                             
                             NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
                                 Text(currentJoint.Joint)
-                                    .font(.system(size:100))
+                                    .font(.custom("subheadline", size: 100))
+                            }
                             }
                         }
                     }
                 }
             }
-            
         }
     }
-}
