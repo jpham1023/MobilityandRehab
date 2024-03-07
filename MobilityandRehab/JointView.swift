@@ -26,7 +26,7 @@ struct JointView: View{
                             }
                         }
                     }
-                }
+                }.listRowBackground(Color.gray)
             }
         }
     }
