@@ -11,7 +11,6 @@ struct ContentView: View {
     
     var body: some View {
         Text("Regions")
-            .foregroundColor(.orange)
         let nameArray = viewobject.regionArray
         NavigationStack{
             List{
@@ -20,7 +19,6 @@ struct ContentView: View {
                     HStack{
                         NavigationLink(destination: JointView(currentRegion: currentRegion)){
                             Text(currentRegion)
-                                .foregroundColor(.orange)
                                 .font(.system(size:100))
                                 .font(.title)
                             }
