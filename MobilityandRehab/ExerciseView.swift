@@ -35,8 +35,19 @@ struct ExerciseView: View {
                                 .foregroundStyle(.orange)
                         }
                     }
+                    HStack{
+                        Text(Currentexercise.notes)
+                            .font(.system(size:50))
+                        Spacer()
+                        Image("HerseyLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height:100)
+                        
+                    }
                 }
             }
         }
     }
-
+    
+}
