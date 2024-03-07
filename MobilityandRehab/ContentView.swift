@@ -10,8 +10,19 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-}
-
-#Preview {
-    ContentView()
+        NavigationStack{
+            Text("Rehab Me")
+                .font(.title)
+            Image("HerseyLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(height:200)
+            NavigationLink(destination:regionList()){
+                Text("Lets Go")
+                    .foregroundColor(.green)
+                    .font(.title)
+            }
+        }
+       
+    }
 }
