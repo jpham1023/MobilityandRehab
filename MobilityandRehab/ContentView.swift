@@ -10,21 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        Text("Regions")
-        let nameArray = viewobject.regionArray
         NavigationStack{
-            List{
-                ForEach(nameArray,id:\.self){
-                    currentRegion in
-                    HStack{
-                        NavigationLink(destination: JointView(currentRegion: currentRegion)){
-                            Text(currentRegion)
-                                .font(.system(size:100))
-                                .font(.title)
-                            }
-                        .frame(height:150)
-                    }
-                }
+            Text("Rehab Me")
+                .font(.title)
+            Image("HerseyLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(height:200)
+            NavigationLink(destination:regionList()){
+                Text("Lets Go")
+                    .foregroundColor(.green)
+                    .font(.title)
             }
         }
        

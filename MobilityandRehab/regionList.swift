@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+
 struct regionList: View{
     @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View{
-        {
-            Text("Regions")
             let nameArray = viewobject.regionArray
             NavigationStack{
                 List{
@@ -30,4 +30,4 @@ struct regionList: View{
             }
         }
     }
-}
+
