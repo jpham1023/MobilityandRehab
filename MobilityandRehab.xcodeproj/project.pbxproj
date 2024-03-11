@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1196C1EE2B9A27340050E795 /* regionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196C1ED2B9A27340050E795 /* regionList.swift */; };
 		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
 		47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC74A22B850AE600740A81 /* WebKitView.swift */; };
 		47FE131E2B9F629200D016B5 /* FRUIT BANANA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131A2B9F629200D016B5 /* FRUIT BANANA.otf */; };
 		47FE131F2B9F629200D016B5 /* MJTYPE-EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131B2B9F629200D016B5 /* MJTYPE-EULA.pdf */; };
 		47FE13202B9F629200D016B5 /* Read Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131C2B9F629200D016B5 /* Read Me.txt */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
-		6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947C0412B6D52E0003F5874 /* RegionArray.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
 		BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD472B35DB5D004C38F1 /* ContentView.swift */; };
 		BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD492B35DB61004C38F1 /* Assets.xcassets */; };
@@ -27,13 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1196C1ED2B9A27340050E795 /* regionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionList.swift; sourceTree = "<group>"; };
 		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		47CC74A22B850AE600740A81 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		47FE131A2B9F629200D016B5 /* FRUIT BANANA.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FRUIT BANANA.otf"; sourceTree = "<group>"; };
 		47FE131B2B9F629200D016B5 /* MJTYPE-EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MJTYPE-EULA.pdf"; sourceTree = "<group>"; };
 		47FE131C2B9F629200D016B5 /* Read Me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Read Me.txt"; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
-		6947C0412B6D52E0003F5874 /* RegionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionArray.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityandRehabApp.swift; sourceTree = "<group>"; };
 		BE67FD472B35DB5D004C38F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */,
-				6947C0412B6D52E0003F5874 /* RegionArray.swift */,
+				1196C1ED2B9A27340050E795 /* regionList.swift */,
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
 				47CC74A22B850AE600740A81 /* WebKitView.swift */,
 				BE67FD532B35E1D7004C38F1 /* ExerciseModel.swift */,
@@ -194,11 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6947C0422B6D52E0003F5874 /* RegionArray.swift in Sources */,
 				476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */,
 				47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */,
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
 				BE67FD562B35E4B3004C38F1 /* RehabViewModel.swift in Sources */,
+				1196C1EE2B9A27340050E795 /* regionList.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
 				BE67FD542B35E1D7004C38F1 /* ExerciseModel.swift in Sources */,
 				D90C06342B6D52E700667E60 /* ExerciseView.swift in Sources */,
