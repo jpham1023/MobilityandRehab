@@ -31,3 +31,4 @@ struct JointView: View{
         .listStyle(InsetGroupedListStyle())
         }
     }
+
