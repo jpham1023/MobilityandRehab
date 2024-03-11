@@ -26,8 +26,7 @@ struct JointView: View{
                             }
                         }
                     }
-                }
-            
+                }.listRowBackground(Color.gray)
             }
         .listStyle(InsetGroupedListStyle())
         }
