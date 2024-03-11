@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
+        Text("Regions")
+        let nameArray = viewobject.regionArray
         NavigationStack{
             Text("Rehab Me")
                 .font(.title)
@@ -25,4 +27,8 @@ struct ContentView: View {
         }
        
     }
+}
+
+#Preview {
+    ContentView()
 }

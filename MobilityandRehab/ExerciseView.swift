@@ -47,6 +47,7 @@ struct ExerciseView: View {
                     }
     
                 }
+                .listRowBackground(Color.gray)
             }
         }
     }
