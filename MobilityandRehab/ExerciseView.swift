@@ -27,8 +27,8 @@ struct ExerciseView: View {
                             HStack{
                                 Spacer()
                                 WebView(videoID: Currentexercise.videoId)
-                                    .frame(width: 375, height: 600)
-                                Spacer()
+                                    .scaledToFit()
+//                                    .frame(width: 800, height: 700)
                             }
                             Text(Currentexercise.notes)
                                 .font(.system(size:50))

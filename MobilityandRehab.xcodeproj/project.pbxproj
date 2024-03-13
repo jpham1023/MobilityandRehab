@@ -10,12 +10,7 @@
 		1196C1EE2B9A27340050E795 /* regionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196C1ED2B9A27340050E795 /* regionList.swift */; };
 		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
 		47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC74A22B850AE600740A81 /* WebKitView.swift */; };
-		47FE131E2B9F629200D016B5 /* FRUIT BANANA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131A2B9F629200D016B5 /* FRUIT BANANA.otf */; };
-		47FE131F2B9F629200D016B5 /* MJTYPE-EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131B2B9F629200D016B5 /* MJTYPE-EULA.pdf */; };
-		47FE13202B9F629200D016B5 /* Read Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 47FE131C2B9F629200D016B5 /* Read Me.txt */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
-		4AC8F9BE2B9F6269004C4A0C /* Leg Muscle.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4AC8F9BD2B9F6269004C4A0C /* Leg Muscle.jpeg */; };
-		4AC8F9C02B9F626E004C4A0C /* Shoulder Muscle.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4AC8F9BF2B9F626D004C4A0C /* Shoulder Muscle.jpeg */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
 		BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD472B35DB5D004C38F1 /* ContentView.swift */; };
 		BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD492B35DB61004C38F1 /* Assets.xcassets */; };
@@ -32,13 +27,7 @@
 		1196C1ED2B9A27340050E795 /* regionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionList.swift; sourceTree = "<group>"; };
 		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		47CC74A22B850AE600740A81 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
-		47FE131A2B9F629200D016B5 /* FRUIT BANANA.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FRUIT BANANA.otf"; sourceTree = "<group>"; };
-		47FE131B2B9F629200D016B5 /* MJTYPE-EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MJTYPE-EULA.pdf"; sourceTree = "<group>"; };
-		47FE131C2B9F629200D016B5 /* Read Me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Read Me.txt"; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
-		4AC8F9BC2B9F624E004C4A0C /* Trunk Muscle Image.webp */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Trunk Muscle Image.webp"; path = "../../../Downloads/Trunk Muscle Image.webp"; sourceTree = "<group>"; };
-		4AC8F9BD2B9F6269004C4A0C /* Leg Muscle.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Leg Muscle.jpeg"; path = "../../../Downloads/Leg Muscle.jpeg"; sourceTree = "<group>"; };
-		4AC8F9BF2B9F626D004C4A0C /* Shoulder Muscle.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Shoulder Muscle.jpeg"; path = "../../../Downloads/Shoulder Muscle.jpeg"; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityandRehabApp.swift; sourceTree = "<group>"; };
 		BE67FD472B35DB5D004C38F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,17 +52,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		47FE131D2B9F629200D016B5 /* fruit_banana */ = {
-			isa = PBXGroup;
-			children = (
-				47FE131A2B9F629200D016B5 /* FRUIT BANANA.otf */,
-				47FE131B2B9F629200D016B5 /* MJTYPE-EULA.pdf */,
-				47FE131C2B9F629200D016B5 /* Read Me.txt */,
-			);
-			name = fruit_banana;
-			path = ../../../Downloads/fruit_banana;
-			sourceTree = "<group>";
-		};
 		BE67FD392B35DB5D004C38F1 = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +80,7 @@
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
 				4A4E217C2B6D51C100A40944 /* JointView.swift */,
 				476EED4F2B6D586A008D8824 /* ExerciseList.swift */,
-				4AC8F9BF2B9F626D004C4A0C /* Shoulder Muscle.jpeg */,
-				4AC8F9BC2B9F624E004C4A0C /* Trunk Muscle Image.webp */,
-				4AC8F9BD2B9F6269004C4A0C /* Leg Muscle.jpeg */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
-				47FE131D2B9F629200D016B5 /* fruit_banana */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 			);
@@ -186,13 +160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC8F9C02B9F626E004C4A0C /* Shoulder Muscle.jpeg in Resources */,
-				4AC8F9BE2B9F6269004C4A0C /* Leg Muscle.jpeg in Resources */,
 				BE67FD4D2B35DB61004C38F1 /* Preview Assets.xcassets in Resources */,
 				BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */,
-				47FE131F2B9F629200D016B5 /* MJTYPE-EULA.pdf in Resources */,
-				47FE13202B9F629200D016B5 /* Read Me.txt in Resources */,
-				47FE131E2B9F629200D016B5 /* FRUIT BANANA.otf in Resources */,
 				D91E60CC2B5ADEA8005ED4CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

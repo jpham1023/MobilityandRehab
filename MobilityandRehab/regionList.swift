@@ -25,6 +25,9 @@ struct regionList: View{
                             .frame(height:150)
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color(red: 253/255, green: 102/255, blue: 26/255))
+                                    .ignoresSafeArea()
                 }
                 
             }

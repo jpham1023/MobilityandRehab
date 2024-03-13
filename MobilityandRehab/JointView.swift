@@ -21,14 +21,24 @@ struct JointView: View{
                             
                             NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
                                 Text(currentJoint.Joint)
-                                    .font(.custom("subheadline", size: 100))
+
+                                    .font(Font.custom("Fruit Banana", size: 75))
                             }
                             }
                         }
                     }
-                }.listRowBackground(Color.gray)
+            
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color(red: 253/255, green: 102/255, blue: 26/255))
+                                .ignoresSafeArea()
             }
-        .listStyle(InsetGroupedListStyle())
+            .background {
+                Color(red: 177/255, green: 176/255, blue: 176/255)
+                    .ignoresSafeArea()
+
+            }
+            .scrollContentBackground(.hidden)
+
         }
     }
-
+                        }
