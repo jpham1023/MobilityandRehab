@@ -13,12 +13,14 @@ struct ContentView: View {
         NavigationStack{
             Text("Rehab Me")
                 .font(.title)
+                .font(Font.custom("Fruit Banana", size: 75))
             Image("HerseyLogo")
                 .resizable()
                 .scaledToFit()
                 .frame(height:200)
             NavigationLink(destination:regionList()){
                 Text("Lets Go")
+                    .font(Font.custom("Fruit Banana", size: 75))
                     .foregroundColor(.green)
                     .font(.title)
             }
