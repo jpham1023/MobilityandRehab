@@ -20,8 +20,7 @@ struct ExerciseList: View {
                         HStack {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
-                                
-                             //       .font(.custom("BADABB__", size: 75))
+                                .font(Font.custom("Fruit Banana", size: 75))
                     
                                     
                             
