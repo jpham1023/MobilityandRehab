@@ -40,7 +40,7 @@ struct ExerciseView: View {
                                 Image("HerseyLogo")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height:100)
+                                    .frame(height:100, alignment: .center)
                                 
                             }
                         }
