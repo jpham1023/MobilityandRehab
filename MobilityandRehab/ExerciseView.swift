@@ -47,6 +47,13 @@ struct ExerciseView: View {
                     }
     
                 }
+                .background {
+                    Color(red: 177/255, green: 176/255, blue: 176/255)
+                        .ignoresSafeArea()
+
+                }
+                .scrollContentBackground(.hidden)
+
                 .listRowBackground(Color.gray)
             }
         }
