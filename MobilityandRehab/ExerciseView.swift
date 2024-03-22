@@ -27,7 +27,7 @@ struct ExerciseView: View {
                             HStack{
                                 Spacer()
                                 WebView(videoID: Currentexercise.videoId)
-                                    .frame(width: 375, height: 600)
+                                    .frame(width: 900, height: 562.5, alignment: .center)
                                 Spacer()
                             }
                             Text(Currentexercise.notes)
@@ -40,7 +40,7 @@ struct ExerciseView: View {
                                 Image("HerseyLogo")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height:100)
+                                    .frame(height:100, alignment: .center)
                                 
                             }
                         }
