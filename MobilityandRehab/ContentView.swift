@@ -19,16 +19,17 @@ struct ContentView: View {
                 .scaledToFit()
                 .frame(height:200)
             NavigationLink(destination:regionList()){
-                Text("Lets Go")
-                    .font(Font.custom("Fruit Banana", size: 75))
-                    .foregroundColor(.green)
-                    .font(.title)
+                ZStack{
+                    Rectangle()
+                        .foregroundStyle(.green)
+                        .frame(width:75, height:25)
+                    Text("Lets Go")
+                        .frame(width:75,height:50)
+                        .foregroundColor(.white)
+                        .font(.title)
+                }
             }
+            
         }
-       
     }
-}
-
-#Preview {
-    ContentView()
 }
