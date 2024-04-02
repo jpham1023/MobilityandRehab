@@ -20,6 +20,7 @@ struct ExerciseList: View {
                         HStack {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
+                                    .foregroundStyle(.white)
                                 .font(Font.custom("Fruit Banana", size: 75))
                     
                                     
@@ -29,8 +30,8 @@ struct ExerciseList: View {
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.orange)
+                frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                                 .ignoresSafeArea()
             }
            
