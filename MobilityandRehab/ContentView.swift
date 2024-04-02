@@ -30,6 +30,9 @@ struct ContentView: View {
                 }
             }
             
+        }.background {
+            Color(.gray)
+                .ignoresSafeArea()
         }
     }
 }
