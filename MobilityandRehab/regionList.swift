@@ -21,6 +21,7 @@ struct regionList: View{
                                 Text(currentRegion)
                                     .font(.system(size:100))
                                     .font(.title)
+                                    .foregroundStyle(.white)
                                 }
                             .frame(height:150)
                         }
