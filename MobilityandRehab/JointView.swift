@@ -32,11 +32,11 @@ struct JointView: View{
                         .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                                 .ignoresSafeArea()
             }
-            .background {
-                Color(red: 177/255, green: 176/255, blue: 176/255)
-                    .ignoresSafeArea()
-
-            }
+//            .background {
+//                Color(red: 177/255, green: 176/255, blue: 176/255)
+//                    .ignoresSafeArea()
+//
+//            }
             .scrollContentBackground(.hidden)
 
         }
