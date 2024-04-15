@@ -21,7 +21,7 @@ struct ContentView: View {
             NavigationLink(destination:regionList()){
                 ZStack{
                     Rectangle()
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
                         .frame(width:650, height:50)
                     Text("Lets Go")
                         .font(.system(size:35))
