@@ -13,6 +13,7 @@ struct ExerciseList: View {
     var currentJoint:  String
     var body: some View {
         NavigationStack {
+            navigationTitle("Exercise List")
             List {
                 ForEach(viewobject.ExerciseArray, id: \.Exercise) {
                     currentExercise in

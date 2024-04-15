@@ -25,6 +25,7 @@ struct JointView: View{
                                     .font(Font.custom("Fruit Banana", size: 75))
                             }
                             }
+                        .frame(height:150)
                         }
                     }
             

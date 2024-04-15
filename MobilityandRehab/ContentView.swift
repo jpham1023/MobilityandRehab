@@ -16,15 +16,16 @@ struct ContentView: View {
             Image("HerseyLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(height:200)
+                .frame(height:400)
+                .padding()
             NavigationLink(destination:regionList()){
                 ZStack{
                     Rectangle()
-                        .foregroundStyle(.green)
-                        .frame(width:150, height:75)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                        .frame(width:650, height:50)
                     Text("Lets Go")
                         .font(.system(size:35))
-                        .frame(width:600,height:500)
+                        .frame(width:600,height:50)
                         .foregroundColor(.white)
                 }
             }
