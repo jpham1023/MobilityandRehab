@@ -23,9 +23,9 @@ struct ContentView: View {
                         .foregroundStyle(.green)
                         .frame(width:150, height:75)
                     Text("Lets Go")
-                        .frame(width:125,height:75)
+                        .font(.system(size:35))
+                        .frame(width:600,height:500)
                         .foregroundColor(.white)
-                        .font(.title)
                 }
             }
             

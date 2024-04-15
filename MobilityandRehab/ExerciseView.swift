@@ -19,11 +19,15 @@ struct ExerciseView: View {
                     ForEach(viewobject.ExerciseArray, id:\.Exercise){
                         Currentexercise in
                         if Currentexercise.Exercise == exerciseName{
-                            Text(Currentexercise.Exercise)
-                                .font(.system(size:50))
-                                .foregroundStyle(.orange)
-                                .multilineTextAlignment(.center)
-                                .frame(width:1000)
+                            HStack{
+                                Spacer()
+                                Text(Currentexercise.Exercise)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size:50))
+                                    .foregroundStyle(.orange)
+                                Spacer()
+                            }
+                            
                             HStack{
                                 Spacer()
                                 WebView(videoID: Currentexercise.videoId)
