@@ -39,7 +39,7 @@ struct JointView: View{
 //
 //            }
             .scrollContentBackground(.hidden)
-
+            .navigationTitle("Joints")
         }
     }
                         }
