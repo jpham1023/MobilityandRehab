@@ -29,22 +29,26 @@ struct ExerciseView: View {
                             }
                             
                             HStack{
-                                Spacer()
-                                WebView(videoID: Currentexercise.videoId)
-                                    .frame(width: 900, height: 562.5, alignment: .center)
-                                Spacer()
-                            }
-                            Text(Currentexercise.notes)
-                                .font(.system(size:50))
-                                .foregroundStyle(.orange)
-                            HStack{
-                                Text(Currentexercise.notes)
-                                    .font(.system(size:50))
-                                Spacer()
-                                Image("HerseyLogo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height:100, alignment: .center)
+                                VStack{
+                                    Spacer()
+                                    WebView(videoID: Currentexercise.videoId)
+                                        .frame(width: 900, height: 562.5, alignment: .center)
+                                    Spacer()
+                                    
+                                    Text(Currentexercise.notes)
+                                        .font(.system(size:50))
+                                        .foregroundStyle(.orange)
+                                    
+                                    Text(Currentexercise.notes)
+                                        .font(.system(size:50))
+                                    HStack{
+                                        Spacer()
+                                        Image("HerseyLogo")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height:100, alignment: .center)
+                                    }
+                                }
                                 
                             }
                         }

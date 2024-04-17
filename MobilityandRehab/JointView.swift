@@ -25,6 +25,7 @@ struct JointView: View{
                                     
                             }
                             }
+                        .frame(height:150)
                         }
                     }
             
@@ -38,7 +39,7 @@ struct JointView: View{
 //
 //            }
             .scrollContentBackground(.hidden)
-
+            .navigationTitle("Joints")
         }
     }
                         }
