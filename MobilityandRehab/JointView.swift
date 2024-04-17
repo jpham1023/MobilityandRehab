@@ -22,7 +22,7 @@ struct JointView: View{
                             NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
                                 Text(currentJoint.Joint)
                                     .foregroundStyle(.white)
-                                    .font(Font.custom("Fruit Banana", size: 75))
+                                    
                             }
                             }
                         .frame(height:150)
@@ -39,7 +39,7 @@ struct JointView: View{
 //
 //            }
             .scrollContentBackground(.hidden)
-
+            .navigationTitle("Joints")
         }
     }
                         }
