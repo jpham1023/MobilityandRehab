@@ -11,8 +11,9 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             Text("Rehab Me")
-                .font(.title)
-                .font(Font.custom("Fruit Banana", size: 75))
+             
+                .font(.system(size: 65))
+            
             Image("HerseyLogo")
                 .resizable()
                 .scaledToFit()
