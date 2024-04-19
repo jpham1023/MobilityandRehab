@@ -22,6 +22,9 @@ struct regionList: View{
                                     .font(.system(size:100))
                                     .font(.title)
                                     .foregroundStyle(.white)
+                                //#Added the format for the images but there is no images to add at this current moment
+//                                Images(custum)
+//                                    .frame(CGSize(width: 200, height: 100))
                                 }
                             .frame(height:150)
                         }
