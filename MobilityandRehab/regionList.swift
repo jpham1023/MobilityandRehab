@@ -11,6 +11,7 @@ import SwiftUI
 struct regionList: View{
     @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View{
+        var regionBackgroundArray:[UIImage] = []
             let nameArray = viewobject.regionArray
             NavigationStack{
                 List{

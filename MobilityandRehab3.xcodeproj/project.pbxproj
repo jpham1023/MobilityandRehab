@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1196C1EE2B9A27340050E795 /* regionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196C1ED2B9A27340050E795 /* regionList.swift */; };
+		11D04CE82BD2D06200572D85 /* trunk.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D04CE72BD2D06200572D85 /* trunk.png */; };
 		476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EED4F2B6D586A008D8824 /* ExerciseList.swift */; };
 		47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC74A22B850AE600740A81 /* WebKitView.swift */; };
 		4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4E217C2B6D51C100A40944 /* JointView.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		1196C1ED2B9A27340050E795 /* regionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionList.swift; sourceTree = "<group>"; };
+		11D04CE72BD2D06200572D85 /* trunk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trunk.png; sourceTree = "<group>"; };
 		476EED4F2B6D586A008D8824 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		47CC74A22B850AE600740A81 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		4A4E217C2B6D51C100A40944 /* JointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				4A4E217C2B6D51C100A40944 /* JointView.swift */,
 				476EED4F2B6D586A008D8824 /* ExerciseList.swift */,
 				BE67FD492B35DB61004C38F1 /* Assets.xcassets */,
+				11D04CE72BD2D06200572D85 /* trunk.png */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
 			);
@@ -134,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BE67FD3D2B35DB5D004C38F1 /* Build configuration list for PBXProject "MobilityandRehab" */;
+			buildConfigurationList = BE67FD3D2B35DB5D004C38F1 /* Build configuration list for PBXProject "MobilityandRehab3" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D04CE82BD2D06200572D85 /* trunk.png in Resources */,
 				BE67FD4D2B35DB61004C38F1 /* Preview Assets.xcassets in Resources */,
 				BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */,
 				D91E60CC2B5ADEA8005ED4CB /* GoogleService-Info.plist in Resources */,
@@ -368,7 +372,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BE67FD3D2B35DB5D004C38F1 /* Build configuration list for PBXProject "MobilityandRehab" */ = {
+		BE67FD3D2B35DB5D004C38F1 /* Build configuration list for PBXProject "MobilityandRehab3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BE67FD4E2B35DB61004C38F1 /* Debug */,
