@@ -22,7 +22,7 @@ struct ExerciseList: View {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
                                     .foregroundStyle(.white)
-                                .font(Font.custom("Fruit Banana", size: 75))
+                               
                     
                                     
                             
