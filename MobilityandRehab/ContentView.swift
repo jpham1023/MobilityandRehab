@@ -12,14 +12,16 @@ struct ContentView: View {
         VStack {
             NavigationStack{
                 Text("Rehab Me")
-                
-                    .font(.system(size: 65))
+                    .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    .font(.system(size: 80))
+                    .frame(height:70)
                 
                 Image("HerseyLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(height:400)
                     .padding()
+                Spacer()
                 NavigationLink(destination:regionList()){
                     ZStack{
                         
@@ -33,20 +35,17 @@ struct ContentView: View {
                     }
                     NavigationLink(destination:regionList()){
                         ZStack {
-                            Rectangle()
+                            RoundedRectangle(cornerRadius:20)
                                 .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-                                .frame(width:650, height:200)
+                                .frame(width:650, height:75)
                             Text("Lets Go")
                                 .font(.system(size:35))
-                                .frame(width:600,height:50)
+                                .frame(width:150,height:50)
                                 .foregroundColor(.white)
                             // NavigationLink(destination:regionList()){
                             
                         }
                         
-                    }.background {
-                        Color(.gray)
-                            .ignoresSafeArea()
                     }
                 }
             }

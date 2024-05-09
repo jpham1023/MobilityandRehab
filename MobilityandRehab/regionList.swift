@@ -11,7 +11,7 @@ import SwiftUI
 struct regionList: View{
     @EnvironmentObject var viewobject:RehabViewmodel
     var body: some View{
-        var regionBackgroundArray:[UIImage] = []
+        var regionBackgroundArray:[String] = []
             let nameArray = viewobject.regionArray
             NavigationStack{
                 List{
@@ -23,11 +23,9 @@ struct regionList: View{
                                     .font(.system(size:100))
                                     .font(.title)
                                     .foregroundStyle(.white)
-                                //#Added the format for the images but there is no images to add at this current moment
-//                                Images(custum)
-//                                    .frame(CGSize(width: 200, height: 100))
                                 }
-                            .frame(height:150)
+                            .frame(height:200)
+                           // .background(Image(regionBackgroundArray[currentReegion]!))
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
