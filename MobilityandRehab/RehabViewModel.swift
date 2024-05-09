@@ -23,43 +23,41 @@ class RehabViewmodel: ObservableObject{
     func pullfromfirebase() {
         let databaseref = Database.database().reference().child("Region")
         databaseref.getData { myError,myDataSnapshot in
-        var tempJointArray: [jointType] = []
-        var tempExerciseArray: [Exercise] = []
-        var tempRegionArray: [String] = []
-        for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
-            let regionName = region.key
-            tempRegionArray.append(regionName)
-            self.regionArray = tempRegionArray
-            guard let jointdictionary = region.value as? [String:Any] else {return}
-            for jointName in jointdictionary.keys{
-                guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
-                for exercises in exerciseDictionary{
-                    let exerciseName = exercises.key
-                    guard let linkDictionary = exercises.value as? [String:Any] else{return}
-                    guard let link = linkDictionary["Link"] else{return}
-                    guard let notes = linkDictionary["Note"] else{return}
-                    guard let videoID = linkDictionary["ID"] else{return}
-                    let currentExercise = Exercise(joint: jointName, Exercise: exerciseName, video: link as! String, notes: notes as! String, videoID: videoID as! String)
-                    tempExerciseArray.append(currentExercise)
+            var tempJointArray: [jointType] = []
+            var tempExerciseArray: [Exercise] = []
+            var tempRegionArray: [String] = []
+            for region in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
+                let regionName = region.key
+                tempRegionArray.append(regionName)
+                self.regionArray = tempRegionArray
+                guard let jointdictionary = region.value as? [String:Any] else {return}
+                for jointName in jointdictionary.keys{
+                    guard let exerciseDictionary = jointdictionary[jointName] as? [String:Any] else {return}
+                    for exercises in exerciseDictionary{
+                        let exerciseName = exercises.key
+                        guard let linkDictionary = exercises.value as? [String:Any] else{return}
+                        guard let link = linkDictionary["Link"] else{return}
+                        guard let notes = linkDictionary["Note"] else{return}
+                        guard let videoID = linkDictionary["ID"] else{return}
+                        let currentExercise = Exercise(joint: jointName, Exercise: exerciseName, video: link as! String, notes: notes as! String, videoID: videoID as! String)
+                        tempExerciseArray.append(currentExercise)
+                    }
+                    let currentJoint = jointType(Joint: jointName, Regions: regionName)
+                    if tempJointArray.contains(currentJoint) == false{
+                        tempJointArray.append(currentJoint)
+                    }
                 }
-                let currentJoint = jointType(Joint: jointName, Regions: regionName)
-                if tempJointArray.contains(currentJoint) == false{
-                    tempJointArray.append(currentJoint)
-                }
+                
+                
+                
             }
+            self.JointArray = tempJointArray
+            self.ExerciseArray = tempExerciseArray
             
             
-                    
-            }
-           self.JointArray = tempJointArray
-        self.ExerciseArray = tempExerciseArray
-            
-                    
-
-            }
             
         }
         
     }
     
-    
+}

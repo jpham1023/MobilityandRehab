@@ -21,24 +21,20 @@ struct ExerciseList: View {
                         HStack {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
+                                    .font(.system(size:100))
+                                    .font(.title)
                                     .foregroundStyle(.white)
-                               
-                    
-                                    
-                            
-                                
                             }
                         }
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color(red: 253/255, green: 102/255, blue: 26/255))
-                                .ignoresSafeArea()
+                .background(Color(red: 253/255, green: 102/255, blue: 26/255))
+                .ignoresSafeArea()
             }
-           
+            
         }
-       
-
+        
+        
     }
 }
-
