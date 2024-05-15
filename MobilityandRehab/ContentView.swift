@@ -15,6 +15,8 @@ struct ContentView: View {
                     .bold()
                     .font(.system(size: 65))
                     .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    .font(.system(size: 80))
+                    .frame(height:70)
                 
                 Image("HerseyLogo")
                     .resizable()
