@@ -18,13 +18,16 @@ struct JointView: View{
                     currentJoint in
                     if currentJoint.Regions == currentRegion{
                         HStack{
-                            NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
-                                Text(currentJoint.Joint)
-                                    .font(.system(size:100))
-                                    .font(.title)
-                                    .foregroundStyle(.white)
-                                
+                            Button("Press") {
+                                print(currentJoint.Joint)
                             }
+//                            NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
+//                                Text(currentJoint.Joint)
+//                                    .font(.system(size:100))
+//                                    .font(.title)
+//                                    .foregroundStyle(.white)
+//                                
+//                            }
                         }
                         .frame(height:150)
                     }
