@@ -13,7 +13,6 @@ struct ExerciseList: View {
     var currentJoint:  String
     var body: some View {
         NavigationStack {
-            navigationTitle("Exercise List")
             List {
                 ForEach(viewobject.ExerciseArray, id: \.Exercise) {
                     currentExercise in
@@ -32,6 +31,7 @@ struct ExerciseList: View {
                 .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                 .ignoresSafeArea()
             }
+            .navigationTitle("Exercises")
             
         }
         

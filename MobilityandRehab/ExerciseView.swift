@@ -12,6 +12,7 @@ struct ExerciseView: View {
     
     @EnvironmentObject var viewobject:RehabViewmodel
     var exerciseName: String
+    @State var tapped: Bool = false
     
     var body: some View {
             VStack{
@@ -24,9 +25,10 @@ struct ExerciseView: View {
                                 Text(Currentexercise.Exercise)
                                     .multilineTextAlignment(.center)
                                     .font(.system(size:50))
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(.white)
                                 Spacer()
                             }
+                            .background(Image("Orange"))
                             
                             HStack{
                                 VStack{
@@ -34,31 +36,45 @@ struct ExerciseView: View {
                                     WebView(videoID: Currentexercise.videoId)
                                         .frame(width: 900, height: 562.5, alignment: .center)
                                     Spacer()
-                                    
-                                    Text(Currentexercise.notes)
-                                        .font(.system(size:50))
-                                        .foregroundStyle(.orange)
-                                    
-                                    Text(Currentexercise.notes)
-                                        .font(.system(size:50))
-                                    HStack{
-                                        Spacer()
-                                        Image("HerseyLogo")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height:100, alignment: .center)
-                                    }
                                 }
-                                
+                                VStack{
+                                    Text("Instructions")
+                                        .font(.system(size:38))
+                                        .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                                        .padding()
+                                    Text(Currentexercise.notes)
+                                        .font(.system(size:20))
+                                        .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                                    
+                                    Spacer()
+                                    Text("Mark as done")
+                                        .font(.system(size:35))
+                                        .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                                    Button {
+                                        tapped = !tapped
+                                    } label: {
+                                        Image(systemName:"square.fill")
+                                            .foregroundStyle(tapped ? Color.green : Color.gray)
+                                            .font(.system(size:40))
+                                    }
+
+                                    Spacer()
+                                    Image("HerseyLogo")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height:100, alignment: .center)
+                                }
+                                .frame(width:230,height:600)
+                                .overlay(){
+                                    RoundedRectangle(cornerRadius:15)
+                                        .stroke(Color.gray)
+                                }
                             }
                         }
                     }
     
                 }
                 
-                .scrollContentBackground(.hidden)
-
-                .listRowBackground(Color.gray)
             }
         }
     }

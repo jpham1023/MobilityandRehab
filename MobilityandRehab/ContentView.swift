@@ -26,27 +26,24 @@ struct ContentView: View {
                 VStack{
                     NavigationLink(destination:regionList()){
                         ZStack {
-                            RoundedRectangle(cornerRadius: 60)
+                            RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-                                .frame(width:650, height:200)
+                                .frame(width:650, height:75)
                             Text("Lets Go")
-                                .font(.system(size:60))
-                                .frame(width:600,height:50)
+                                .font(.system(size:35))
+                                .frame(width:150,height:50)
                                 .foregroundColor(.white)
                         }
                     }
-                }
-                Spacer()
-                    .frame(height: 35)
-                VStack{
+
                     NavigationLink(destination:SignInView()){
                         ZStack{
-                            RoundedRectangle(cornerRadius: 60)
+                            RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-                                .frame(width:650, height:200)
-                            Text("Sign In (WIP)")
-                                .font(.system(size:60))
-                                .frame(width:600,height:50)
+                                .frame(width:650, height:75)
+                            Text("Sign In")
+                                .font(.system(size:35))
+                                .frame(width:150,height:50)
                                 .foregroundColor(.white)
                         }
                     }
