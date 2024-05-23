@@ -51,7 +51,8 @@ struct UserPage: View{
                     }
                 }
                 else{
-                    HStack{
+                    VStack{
+                        HStack{
                             Text("Assignments")
                                 .font(.title)
                                 .font(.system(size:35))
@@ -59,8 +60,8 @@ struct UserPage: View{
                             Image(systemName: "message.fill")
                                 .foregroundStyle(.green)
                             
-                        }
-                    VStack{
+                        }.offset(y: 15)
+                        
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
                                 .frame(width:275, height:75)
@@ -71,8 +72,9 @@ struct UserPage: View{
                                 Text("Dynamic Ankle")
                                     .foregroundStyle(.white)
                             }
-
+                            
                         }
+
                         .padding()
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
@@ -84,50 +86,50 @@ struct UserPage: View{
                                 Text("Rotator Cuff Exercise")
                                     .foregroundStyle(.white)
                             }
-
+                            
                         }
                         Spacer()
                     }
                     .frame(width:300,height:400)
-                    .border(.white)
+                    .border(.gray, width: 4)
                     .padding()
-                        
-            
+                    
+                    
                     
                 }
-                    
-            Button(action: {
-                showAlert = true
-                    }, label: {
-                        ZStack{
-                            Rectangle()
-                                .foregroundStyle(.red)
-                                .frame(width:200,height:50)
-                            Text("Log out")
-                                .foregroundStyle(.white)
+                
+                Button(action: {
+                    showAlert = true
+                }, label: {
+                    ZStack{
+                        Rectangle()
+                            .foregroundStyle(.red)
+                            .frame(width:200,height:50)
+                        Text("Log out")
+                            .foregroundStyle(.white)
                     }
                 })
-                    
-                    
-                    
-                }
-            .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Log out"),
-                        message: Text("Are you sure you want to log out?"),
-                        primaryButton: .default(
-                            Text("Yes"),
-                            action: {
-                                logOut(userChange: userLogged)
-                                logOutEducator(viewobject: viewobject)
-                            }
-                        ),
-                        secondaryButton: .default(Text("No"))
-                    )
-        }
+                
+                
                 
             }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Log out"),
+                    message: Text("Are you sure you want to log out?"),
+                    primaryButton: .default(
+                        Text("Yes"),
+                        action: {
+                            logOut(userChange: userLogged)
+                            logOutEducator(viewobject: viewobject)
+                        }
+                    ),
+                    secondaryButton: .default(Text("No"))
+                )
+            }
             
+        }
+        
         
         else{
             SignInView()
