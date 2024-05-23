@@ -14,11 +14,22 @@ class RehabViewmodel: ObservableObject{
     @Published  var JointArray:[jointType] = []
     @Published var regionArray: [String] = []
     @Published var ExerciseArray: [Exercise] = []
+    @Published var educatorLogged:Bool = false
     
     init(){
         pullfromfirebase()
     }
     
+    func addExerciseToFirebase(currentJointType:jointType, currentExerciseType: Exercise){
+        let databaseref = Database.database().reference()
+        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).setValue(currentExerciseType.Exercise)
+        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.videoId)
+        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.notes)
+        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.video)
+
+
+
+    }
     
     func pullfromfirebase() {
         let databaseref = Database.database().reference().child("Region")

@@ -6,10 +6,10 @@
 
 import SwiftUI
 import FirebaseCore
+import SwiftData
 
 
 @main
-
 struct MobilityandRehabApp: App {
     init(){
         FirebaseApp.configure()
@@ -17,8 +17,10 @@ struct MobilityandRehabApp: App {
     var body: some Scene {
         @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
         WindowGroup {
-            ContentView()
+            tabBar()
                 .environmentObject(viewobject)
+                .modelContainer(for: userLogged.self)
+
         }
     }
 }

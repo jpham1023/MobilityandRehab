@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 class Exercise {
     init(joint: String, Exercise: String, video: String, notes: String, videoID: String) {
@@ -33,3 +34,6 @@ struct jointType: Hashable{
     var Joint: String
     var Regions: String
 }
+
+
+

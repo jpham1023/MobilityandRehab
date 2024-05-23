@@ -34,7 +34,7 @@ struct ExerciseView: View {
                                 VStack{
                                     Spacer()
                                     WebView(videoID: Currentexercise.videoId)
-                                        .frame(width: 900, height: 562.5, alignment: .center)
+                                        .frame(width: 750, height: 550, alignment: .center)
                                     Spacer()
                                 }
                                 VStack{

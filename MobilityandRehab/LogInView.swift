@@ -7,12 +7,20 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct LogInView: View {
+    @Environment(\.modelContext) var modelContext
     @State private var username: String = ""
     @State private var password: String = ""
+    @EnvironmentObject var viewobject: RehabViewmodel
+    @State var userNavigate = false
     
     var body: some View {
+        Image(systemName: "person.crop.circle")
+            .font(.system(size:45))
+        Text("Log In")
+            .font(.system(size:45))
         VStack {
             TextField("Username", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -22,7 +30,15 @@ struct LogInView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
-            Button(action: signIn) {
+            Button(action: {
+                let newUser = userLogged(loggedIn: true)
+                modelContext.insert(newUser)
+                if username == "Educator@stu.d214.org"{
+                    viewobject.educatorLogged = true
+                    print("logged in")
+                }
+                userNavigate = true
+            }) {
                 Text("Sign In")
                     .padding()
                     .foregroundColor(.white)
@@ -30,11 +46,10 @@ struct LogInView: View {
                     .cornerRadius(8)
             }
             .padding()
+            NavigationLink("", destination:UserPage(), isActive:$userNavigate)
         }
         .padding()
     }
     
-    func signIn() {
-        
-    }
+
 }
