@@ -26,6 +26,7 @@ struct JointView: View{
                                 
                             }
                         }
+                        .listRowBackground(Color(red: 253/255, green: 102/255, blue: 26/255))
                         .frame(height:150)
                     }
                 }
@@ -39,6 +40,7 @@ struct JointView: View{
             //                    .ignoresSafeArea()
             //
             //            }
+            .listRowSpacing(10)
             .scrollContentBackground(.hidden)
             .navigationTitle("Joints")
         }
