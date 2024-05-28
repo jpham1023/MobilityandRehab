@@ -19,6 +19,7 @@ struct addVideo: View{
     @State var chooseNotes = ""
     @State var regionSelected = false
     @State var jointSelected = false
+    @State var showingPopover = false
     @EnvironmentObject var viewobject:RehabViewmodel
     var idGenerator = videoIDGenerator()
     var body: some View{
@@ -84,6 +85,18 @@ struct addVideo: View{
                     WebView(videoID: videoID ?? "zkdkPigEMGA")
                         .frame(width:600, height:400)
                         .border(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    Button(action: {
+                                                showingPopover = true
+                                            }, label: {
+                                                Image(systemName: "info.circle.fill")
+                                                    .font(.system(size:25))
+                                                    .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                                            })
+                    .popover(isPresented: $showingPopover) {
+                        Text("Video unavailable means this link will not show up on the screen and should not be added")
+                            .font(.headline)
+                            .padding()
+                    }
                     VStack{
                         Menu{
                             ForEach(regionArray, id:\.self){
@@ -152,7 +165,7 @@ struct addVideo: View{
                         .font(.system(size:30))
                         .padding()
                         Button(action: {
-                            let newJoint = jointType(Joint: chooseRegion, Regions: chooseJoint)
+                            let newJoint = jointType(Joint: chooseJoint, Regions: chooseRegion)
                             let newExercise = Exercise(joint: chooseJoint, Exercise: chooseExercise, video: videoUrl, notes: chooseNotes, videoID: videoID!)
                             viewobject.addExerciseToFirebase(currentJointType: newJoint, currentExerciseType: newExercise)
                             videoUrl = ""
