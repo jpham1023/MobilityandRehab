@@ -19,6 +19,7 @@ struct SignInView: View {
     @State private var confirmPassword: String = ""
     @State private var showAlert: Bool = false
     @State private var signIn:Bool = false
+    @State private var passwordLength = false
     @State private var navigateLogin:Bool = false
     @StateObject var viewmodel = signInViewmodel()
     
@@ -44,18 +45,21 @@ struct SignInView: View {
                     .bold()
                     .foregroundStyle(.green)
             }
-            Button(action: {
-                navigateLogin = true
-                let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
-                signIn = authUser != nil
+            Button(action:{
+                if confirmPassword.count < 6{
+                    passwordLength = true
+                }
                 Task{
                     do{
                        try await viewmodel.signIn()
                     }
                     catch{
-                        
+                        print("couldnt sign in")
                     }
+                    
                 }
+                let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
+                signIn = authUser != nil
             }, label: {
                 Text("Create Account")
                     .padding()
@@ -67,6 +71,9 @@ struct SignInView: View {
             .padding()
         }
         .padding()
+        .alert(isPresented:$passwordLength){
+            Alert(title:Text("error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
+        }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text("Passwords do not match"), dismissButton: .default(Text("OK")))
         }
