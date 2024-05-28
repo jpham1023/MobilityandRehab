@@ -18,7 +18,7 @@ struct tabBar: View{
                 Image(systemName: "figure.flexibility")
             }
             NavigationStack{
-                UserPage()
+                RootView()
             }
             .tabItem{
                 Image(systemName: "person.circle.fill")
