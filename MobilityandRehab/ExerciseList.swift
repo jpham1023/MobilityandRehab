@@ -32,12 +32,14 @@ struct ExerciseList: View {
 
                             }
                         }
+                        .listRowBackground(Color(red: 253/255, green: 102/255, blue: 26/255))
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                 .ignoresSafeArea()
             }
+            .listRowSpacing(10)
             .navigationTitle("Exercises")
             
         }
