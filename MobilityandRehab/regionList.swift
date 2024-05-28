@@ -25,7 +25,7 @@ struct regionList: View{
                                 
                         }
 //
-                        .frame(height:250)
+                        .frame(height:180)
                     }
                     .background(Image(regionBackgroundArray[currentRegion]!))
                 }
