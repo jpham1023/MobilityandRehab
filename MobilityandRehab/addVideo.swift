@@ -165,7 +165,7 @@ struct addVideo: View{
                         .font(.system(size:30))
                         .padding()
                         Button(action: {
-                            let newJoint = jointType(Joint: chooseRegion, Regions: chooseJoint)
+                            let newJoint = jointType(Joint: chooseJoint, Regions: chooseRegion)
                             let newExercise = Exercise(joint: chooseJoint, Exercise: chooseExercise, video: videoUrl, notes: chooseNotes, videoID: videoID!)
                             viewobject.addExerciseToFirebase(currentJointType: newJoint, currentExerciseType: newExercise)
                             videoUrl = ""
