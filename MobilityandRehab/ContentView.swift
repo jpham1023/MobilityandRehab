@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+//    init() {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
+//    }
+    
     @State var showingPopover = false
     var body: some View {
         VStack {
@@ -43,7 +48,7 @@ struct ContentView: View {
                         .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
                                 })
                 .popover(isPresented: $showingPopover) {
-                Text("Developed By: Jenny Pham, Marcus Lustria, Kazuya Nishizaka, Teo Djuric, and Dylan Domeracki")
+                Text("Developed By: Jenny Pham, Marcus Lustria, Kazuya Nishizaka, Teodor Djuric, and Dylan Domeracki")
                 .font(.headline)
                     .padding()
                                                 }
