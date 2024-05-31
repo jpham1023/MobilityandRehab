@@ -22,13 +22,20 @@ class RehabViewmodel: ObservableObject{
     
     func addExerciseToFirebase(currentJointType:jointType, currentExerciseType: Exercise){
         let databaseref = Database.database().reference()
-        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).setValue(currentExerciseType.Exercise)
-        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.videoId)
-        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.notes)
-        databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.video)
-        
-        
-        
+         let regions = currentJointType.Regions as NSString
+         let joint = currentJointType.Joint as NSString
+          let exercise = currentExerciseType.Exercise as NSString
+         let ID = currentExerciseType.videoId as NSString
+          let video = currentExerciseType.video as NSString
+          let notes = currentExerciseType.notes as NSString
+            let exerciseData: [String: Any] = [
+                "ID": ID,
+                "Link": video,
+                "Note": notes
+            ]
+        databaseref.child("Region").child(regions as String).child(joint as String).updateChildValues([exercise: NSDictionary()])
+        databaseref.child("Region").child(regions as String).child(joint as String).child(exercise as String).updateChildValues(exerciseData)
+
     }
     
     func pullfromfirebase() {

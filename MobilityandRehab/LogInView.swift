@@ -8,13 +8,16 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import FirebaseAuth
 
 struct LogInView: View {
     @Environment(\.modelContext) var modelContext
     @State private var username: String = ""
     @State private var password: String = ""
     @EnvironmentObject var viewobject: RehabViewmodel
+    @StateObject var signinviewmodel = signInViewmodel()
     @State var userNavigate = false
+    @State var errorText = ""
     
     var body: some View {
         Image(systemName: "person.crop.circle")
@@ -31,13 +34,34 @@ struct LogInView: View {
                 .padding()
             
             Button(action: {
-                let newUser = userLogged(loggedIn: true)
-                modelContext.insert(newUser)
-                if username == "Educator@stu.d214.org"{
-                    viewobject.educatorLogged = true
-                    print("logged in")
+                Task{
+                    do{
+                        try await signinviewmodel.signIn()
+                    }
+                    catch{
+                        var error = error as NSError
+                        if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
+                            switch ErrorCode{
+                            case .invalidEmail:
+                                errorText = "Enter a valid email address"
+                            case .emailAlreadyInUse:
+                                errorText = "This email is already connected to an existing user. Try logging in"
+                            case .weakPassword:
+                                errorText = "Password is too weak. Enter a new one."
+                            case .networkError:
+                                errorText = "Network error. Could not connect to database. Try again later"
+                            case .tooManyRequests:
+                                errorText = "Too many requests. Try again later"
+                            case .internalError:
+                                errorText = "An internal error has occured"
+                            default:
+                                errorText = "Sorry an unknown error has occured"
+                            }
+                    }
+                        print(errorText)
+                    }
+                    
                 }
-                userNavigate = true
             }) {
                 Text("Sign In")
                     .padding()

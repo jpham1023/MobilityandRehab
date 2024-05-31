@@ -20,12 +20,15 @@ struct JointView: View{
                         HStack{
                             NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
                                 Text(currentJoint.Joint)
-                                    .font(.system(size:100))
-                                    .font(.title)
-                                    .foregroundStyle(.white)
+                                   .font(.system(size:100))
+                                   .font(.title)
+                                   .foregroundStyle(.white)
+                                   .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
+                                   .shadow(color: .white.opacity(0.7), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
                                 
                             }
                         }
+                        .listRowBackground(Color(red: 253/255, green: 102/255, blue: 26/255))
                         .frame(height:150)
                     }
                 }
@@ -34,6 +37,12 @@ struct JointView: View{
                 .ignoresSafeArea()
                 .cornerRadius(10)
             }
+            //            .background {
+            //                Color(red: 177/255, green: 176/255, blue: 176/255)
+            //                    .ignoresSafeArea()
+            //
+            //            }
+            .listRowSpacing(10)
             .scrollContentBackground(.hidden)
             .navigationTitle("Joints")
         }

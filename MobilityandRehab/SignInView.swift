@@ -1,15 +1,24 @@
-//
-//  SignInView.swift
-//  MobilityandRehab
-//
-//  Created by Dylan Domeracki on 5/13/24.
-//
-
 import SwiftUI
+import FirebaseAuth
 
-struct User {
-    var username: String
-    var password: String
+final class signInViewmodel: ObservableObject{
+    @Published var email:String = ""
+    @Published var password: String = ""
+    
+    func signUp() async throws{
+        guard !email.isEmpty, !password.isEmpty else{
+            return
+        }
+    let returnedUserData = try await AuthenticationManager.authManager.createUser(email:email, password:password)
+
+    }
+    func signIn() async throws{
+        guard !email.isEmpty, !password.isEmpty else{
+            return
+        }
+        let returnedUserData = try await AuthenticationManager.authManager.signIn(email:email, password:password)
+
+    }
 }
 
 struct SignInView: View {
@@ -18,52 +27,104 @@ struct SignInView: View {
     @State private var confirmPassword: String = ""
     @State private var showAlert: Bool = false
     @State private var signIn:Bool = false
+    @State private var passwordLength = false
     @State private var navigateLogin:Bool = false
+    @State private var errorText = ""
+    @StateObject var viewmodel = signInViewmodel()
     
     var body: some View {
+        Image(systemName: "person.badge.plus")
+            .font(.system(size:50))
+        Text("Sign Up")
+            .font(.system(size:40))
         VStack {
-            Image(systemName: "person.badge.plus")
-                .font(.system(size:50))
-            Text("Sign Up")
-                .font(.system(size:40))
-            TextField("Username", text: $username)
+            TextField("Username", text: $viewmodel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $viewmodel.password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
             SecureField("Confirm Password", text: $confirmPassword)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            
-            Button(action: createAccount) {
+            if signIn{
+                Text("Success!")
+                    .bold()
+                    .foregroundStyle(.green)
+            }
+            Button(action:{
+                if viewmodel.password.count < 6{
+                    passwordLength = true
+                    showAlert = true
+                }
+                else{
+                    passwordLength = false
+                    checkPassword()
+                }
+                if passwordLength == false{
+                    Task{
+                        
+                        do{
+                            try await viewmodel.signUp()
+                            return
+                        }
+                        catch{
+                        var error = error as NSError
+                        if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
+                            switch ErrorCode{
+                            case .invalidEmail:
+                                errorText = "Enter a valid email address"
+                            case .emailAlreadyInUse:
+                                errorText = "This email is already connected to an existing user. Try logging in"
+                            case .weakPassword:
+                                errorText = "Password is too weak. Enter a new one."
+                            case .networkError:
+                                errorText = "Network error. Could not connect to database. Try again later"
+                            case .tooManyRequests:
+                                errorText = "Too many requests. Try again later"
+                            case .internalError:
+                                errorText = "An internal error has occured"
+                            default:
+                                errorText = "Sorry an unknown error has occured"
+                            }
+                            print(errorText)
+                    }
+                        }
+                        do{
+                            try await viewmodel.signIn()
+                        }
+                        catch{
+                            
+                        }
+                    }
+                }
+            }, label: {
                 Text("Create Account")
                     .padding()
                     .foregroundColor(.white)
                     .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                     .cornerRadius(8)
-            }
-            NavigationLink("", destination:LogInView(), isActive:$navigateLogin)
-                .padding()
+            })
+            
+            .padding()
         }
         .padding()
+        .alert(isPresented:$passwordLength){
+            Alert(title:Text("error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
+        }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text("Passwords do not match"), dismissButton: .default(Text("OK")))
         }
-        HStack{
-            Text("Already have an account?")
-            NavigationLink("Log in", destination: LogInView())
-        }
+        
     }
     
-    func createAccount() {
+    func checkPassword() {
         if password != confirmPassword {
             showAlert = true
             return
         }
-        let newUser = User(username: username, password: password)
-        print("New User created: \(newUser)")
     }
+    
 }

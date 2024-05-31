@@ -22,10 +22,12 @@ struct regionList: View{
                             Text(currentRegion)
                                 .font(.system(size:100))
                                 .foregroundStyle(.white)
-                            
+                                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
+                                .shadow(color: .white.opacity(0.7), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
+                                
                         }
-                        //
-                        .frame(height:250)
+//
+                        .frame(height:180)
                     }
                     .background(Image(regionBackgroundArray[currentRegion]!))
                 }
