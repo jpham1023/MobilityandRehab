@@ -23,6 +23,7 @@
 		69BEFEB02C0630CF000A1B26 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEFEAF2C0630CF000A1B26 /* RootView.swift */; };
 		69F306112BED2C170032773F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 69F306102BED2C170032773F /* FirebaseDatabase */; };
 		69F306132BED2C170032773F /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 69F306122BED2C170032773F /* FirebaseDatabaseSwift */; };
+		ACFE025E2C08F2370073FDE4 /* userSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE025D2C08F2370073FDE4 /* userSettings.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
 		BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD472B35DB5D004C38F1 /* ContentView.swift */; };
 		BE67FD4A2B35DB61004C38F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE67FD492B35DB61004C38F1 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		6900B4B72BFB854B00CF33F9 /* LoggedInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInModel.swift; sourceTree = "<group>"; };
 		69BEFEAB2C062E55000A1B26 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		69BEFEAF2C0630CF000A1B26 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		ACFE025D2C08F2370073FDE4 /* userSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userSettings.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityandRehabApp.swift; sourceTree = "<group>"; };
 		BE67FD472B35DB5D004C38F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				11D04CE72BD2D06200572D85 /* trunk.png */,
 				BE67FD4B2B35DB61004C38F1 /* Preview Content */,
 				D91E60CB2B5ADEA8005ED4CB /* GoogleService-Info.plist */,
+				ACFE025D2C08F2370073FDE4 /* userSettings.swift */,
 			);
 			path = MobilityandRehab;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				476EED502B6D586A008D8824 /* ExerciseList.swift in Sources */,
+				ACFE025E2C08F2370073FDE4 /* userSettings.swift in Sources */,
 				69BEFEAC2C062E55000A1B26 /* AuthenticationManager.swift in Sources */,
 				6900B4B42BFB7D5600CF33F9 /* UserPage.swift in Sources */,
 				69BEFEB02C0630CF000A1B26 /* RootView.swift in Sources */,
@@ -362,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobilityandRehab/Preview Content\"";
-				DEVELOPMENT_TEAM = C3RTRUBT8U;
+				DEVELOPMENT_TEAM = T3WWNNX3L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -375,7 +379,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.6326.MobilityandRehab;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.626326.MobilityandRehab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -391,7 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobilityandRehab/Preview Content\"";
-				DEVELOPMENT_TEAM = C3RTRUBT8U;
+				DEVELOPMENT_TEAM = T3WWNNX3L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -404,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.6326.MobilityandRehab;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.626326.MobilityandRehab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

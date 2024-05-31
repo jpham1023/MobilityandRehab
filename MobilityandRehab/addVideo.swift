@@ -20,6 +20,11 @@ struct addVideo: View{
     @State var regionSelected = false
     @State var jointSelected = false
     @State var showingPopover = false
+    @State var failedVideoUsed = false
+    @State var showAlert =  false
+    @State var newJoint = false
+    @State var customJointSelected = false
+    @State var customJoint = ""
     @EnvironmentObject var viewobject:RehabViewmodel
     var idGenerator = videoIDGenerator()
     var body: some View{
@@ -122,27 +127,57 @@ struct addVideo: View{
                         }
                         .font(.system(size:30))
                         .padding()
-                        Menu{
-                            ForEach(jointArray, id:\.self){
-                                currentJoint in
+                        if customJointSelected == false{
+                            Menu{
+                                ForEach(jointArray, id:\.self){
+                                    currentJoint in
+                                    Button(action: {
+                                        chooseJoint = currentJoint.Joint
+                                        jointSelected = true
+                                    }, label: {
+                                        Text(currentJoint.Joint)
+                                    })
+                                }
                                 Button(action: {
-                                    chooseJoint = currentJoint.Joint
-                                    jointSelected = true
+                                    customJointSelected = true
                                 }, label: {
-                                    Text(currentJoint.Joint)
+                                    Text("Other")
+                                })
+                            } label:{
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .frame(width:200, height: 50)
+                                        .foregroundStyle(.gray)
+                                    Text("\(chooseJoint)")
+                                        .foregroundStyle(jointSelected ? Color.green :Color(UIColor.placeholderText))
+                                }
+                            }
+                            .font(.system(size:30))
+                            .padding()
+                        }
+                        if customJointSelected == true{
+                            HStack{
+                                Spacer()
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .frame(width:200, height:50)
+                                        .foregroundStyle(.gray)
+                                    TextField("Name of Joint", text: $customJoint)
+                                        .font(.system(size:26))
+                                        .foregroundStyle(Color.green)
+                                        .frame(width:200,height:45)
+                                }
+                                .frame(width:200)
+                                .padding()
+                                Button(action: {
+                                    customJointSelected = false
+                                }, label: {
+                                    Image(systemName: "arrowshape.up.fill")
+                                        .font(.system(size:15))
                                 })
                             }
-                        } label:{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 15)
-                                    .frame(width:200, height: 50)
-                                    .foregroundStyle(.gray)
-                                Text("\(chooseJoint)")
-                                    .foregroundStyle(jointSelected ? Color.green :Color(UIColor.placeholderText))
-                            }
+                            .frame(width:250)
                         }
-                        .font(.system(size:30))
-                        .padding()
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15)
                                     .frame(width:200, height: 50)
@@ -167,15 +202,24 @@ struct addVideo: View{
                         .font(.system(size:30))
                         .padding()
                         Button(action: {
-                            let newJoint = jointType(Joint: chooseJoint, Regions: chooseRegion)
-                            let newExercise = Exercise(joint: chooseJoint, Exercise: chooseExercise, video: videoUrl, notes: chooseNotes, videoID: videoID!)
-                            viewobject.addExerciseToFirebase(currentJointType: newJoint, currentExerciseType: newExercise)
-                            videoUrl = ""
-                            chooseExercise = ""
-                            chooseRegion = "Pick a region"
-                            chooseJoint = "Pick a joint"
-                            regionSelected = false
-                            jointSelected = false
+                            if videoID == nil{
+                                failedVideoUsed = true
+                            }
+                            else{
+                                failedVideoUsed = false
+                            }
+                            
+                            if failedVideoUsed == false{
+                            var newJoint = jointType(Joint: chooseJoint, Regions: chooseRegion)
+                                var newExercise = Exercise(joint: chooseJoint, Exercise: chooseExercise, video: videoUrl, notes: chooseNotes, videoID: videoID!)
+                                if customJointSelected == true{
+                                   newJoint = jointType(Joint: customJoint, Regions: chooseRegion)
+                                    newExercise = Exercise(joint: customJoint, Exercise: chooseExercise, video: videoUrl, notes: chooseNotes, videoID: videoID!)
+                                }
+                                viewobject.addExerciseToFirebase(currentJointType: newJoint, currentExerciseType: newExercise)
+                            }
+                            
+                            showAlert = true
                             
                         }, label: {
                             Image(systemName: "plus.app.fill")
@@ -184,6 +228,26 @@ struct addVideo: View{
                         })
                         
                     }
+                    .alert(isPresented:$showAlert){
+                        if failedVideoUsed{
+                            return Alert(title:Text("Error"), message: Text("Cannot add invalid youtube video"), dismissButton:.default(Text("OK")))
+                        }
+                    return Alert(
+                        title: Text("Continue/ this action cannot be undone"),
+                        message: Text("Region Selected: \(chooseRegion) \n Joint Selected: \(chooseJoint) \n Exercise Name: \(chooseExercise) \n Notes: \(chooseNotes)"),
+                        primaryButton: .destructive(Text("Yes"), action: {
+                                videoUrl = ""
+                                chooseExercise = ""
+                                chooseRegion = "Pick a region"
+                                chooseJoint = "Pick a joint"
+                                regionSelected = false
+                                jointSelected = false
+                                
+                        }),
+                        secondaryButton: .default(Text("Cancel"), action: {
+                        
+                    })
+                )}
                     .padding()
                     .frame(width:300,height:500)
                     
