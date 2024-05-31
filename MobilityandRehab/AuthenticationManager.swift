@@ -7,6 +7,8 @@
 
 import SwiftUI
 import FirebaseAuth
+import AuthenticationServices
+import FirebaseCore
 
 struct AuthDataResultModel{
     let uid: String
@@ -19,13 +21,21 @@ struct AuthDataResultModel{
     }
 }
 
+enum AuthState{
+    case signedIn
+    case signedOut
+}
+@MainActor
 final class AuthenticationManager{
+    private var authStateHandle: AuthStateDidChangeListenerHandle!
     static let authManager = AuthenticationManager()
+    @Published  var authState = AuthState.signedOut
     init(){
           configureAuthStateChanges()
       }
      func configureAuthStateChanges(){
-         authStateHandle = Auth.auth().addStateDidChangeListener{ auth, user in
+       authStateHandle = Auth.auth().addStateDidChangeListener{ auth, user in
+           print(user)
               self.updateUserState(user:user)
           }
       }
@@ -36,7 +46,7 @@ final class AuthenticationManager{
         return AuthDataResultModel(user:user)
     }
     func updateUserState(user: User?){
-         self.user = user
+         let user = user
           let isUserAuthenticated = user != nil
          if isUserAuthenticated{
               self.authState = .signedIn

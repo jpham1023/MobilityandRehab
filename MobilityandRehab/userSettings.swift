@@ -11,6 +11,7 @@ import SwiftUI
 class UserSettingsViewmodel: ObservableObject{
     func logOut() throws{
         try AuthenticationManager.authManager.signOut()
+    }
         
         func resetPassword() async throws{
             let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
@@ -23,6 +24,8 @@ class UserSettingsViewmodel: ObservableObject{
         @Binding var showSignIn: Bool
         @State var showAlert = false
         @State var showResetText = false
+        @State var errorText = ""
+        @State var showErrorAlert = false
         var body: some View{
             VStack{
                 Image(systemName: "figure.wave")
@@ -35,7 +38,7 @@ class UserSettingsViewmodel: ObservableObject{
             }
             .padding()
             List(){
-                Section(header:Text("Settings")){
+               Text("Settings")
                     Button(action: {
                         Task{
                             do{
@@ -43,7 +46,7 @@ class UserSettingsViewmodel: ObservableObject{
                                 showSignIn = true
                             }
                             catch{
-                                Text("Unable to log out")
+                                errorText = "Unable to log out"
                             }
                         }
                     }, label: {
@@ -59,29 +62,39 @@ class UserSettingsViewmodel: ObservableObject{
                                                    action: {
                                                        Task{
                                                            do{
-                                                                settingsViewmodel.logOut()
+                                                               try settingsViewmodel.logOut()
                                                                showSignIn = true
                                                            }
                                                            catch{
-                                                               print("error")
+                                                               errorText = "unable to log out"
+                                                               showErrorAlert = true
                                                            }
                                                        }
                                                    }
                                                ),
                                                secondaryButton: .default(Text("No"))
                                            )}
-                    Button(action: {
-                        settingsViewmodel.resetPassword()
-                        showResetText = true
-                    }, label: {
-                        Text("Reset Password")
-                            .foregroundStyle(.white)
-                    })
+                Button(action: {
+                    Task{
+                        do{
+                            try await settingsViewmodel.resetPassword()
+                        }
+                        catch{
+                            errorText = "Cannot reset Password try again"
+                            showErrorAlert =  true
+                        }
+                    }
+                }, label: {
+                    Text("Reset Password")
+                })
+                        
                     .alert(isPresented: $showResetText) {
                         return  Alert(title:Text("Success"), message: Text("Check email to reset your password"),dismissButton: .default(Text("Ok")))
                     }
                 }
+            .alert(isPresented: $showErrorAlert){
+                return Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
+            }
             }
         }
-    }
-}
+

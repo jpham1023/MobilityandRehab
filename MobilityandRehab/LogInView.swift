@@ -12,34 +12,36 @@ import FirebaseAuth
 
 struct LogInView: View {
     @Environment(\.modelContext) var modelContext
-    @State private var username: String = ""
-    @State private var password: String = ""
     @EnvironmentObject var viewobject: RehabViewmodel
     @StateObject var signinviewmodel = signInViewmodel()
     @State var userNavigate = false
     @State var errorText = ""
-    
+    @State var success = false
     var body: some View {
         Image(systemName: "person.crop.circle")
             .font(.system(size:45))
         Text("Log In")
             .font(.system(size:45))
         VStack {
-            TextField("Username", text: $username)
+            TextField("Email", text: $signinviewmodel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $signinviewmodel.password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            
+            if success{
+                Text("Success!")
+            }
             Button(action: {
                 Task{
                     do{
                         try await signinviewmodel.signIn()
+                        success = true
+                        print("Sign in")
                     }
                     catch{
-                        var error = error as NSError
+                        let error = error as NSError
                         if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
                             switch ErrorCode{
                             case .invalidEmail:
@@ -58,6 +60,7 @@ struct LogInView: View {
                                 errorText = "Sorry an unknown error has occured"
                             }
                     }
+                        print(error)
                         print(errorText)
                     }
                     

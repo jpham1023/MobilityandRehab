@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseDatabase
 
 class UserViewmodel : ObservableObject{
     @Published var adminArray:[String] = []
@@ -14,39 +15,47 @@ class UserViewmodel : ObservableObject{
         pullAdminData()
     }
     func pullAdminData(){
-        let databaseref = Database.database().reference.child("Admin")
+        let databaseref = Database.database().reference().child("Admin")
         databaseref.getData{ myError, myDataSnapshot in
             for adminEmails in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
                 guard let email = adminEmails.value as? String else{return}
-                adminArray.append(email)
+                self.adminArray.append(email)
            }
         }
     }
 }
-struct UserView: View{
+struct UserView: View {
     @StateObject var adminViewmodel = UserViewmodel()
-    @State private var showSignIn = false
+    @State private var showSignIn:Bool = true
     @State private var educatorLogIn = false
     var body: some View{
-          let authUser = try? AuthenticationManager.manager.getAuthenticatedUser()
-      self.showSignIn = authUser == nil
-    if authManager.authState != .signedOut{
-            showSignIn = true
-        if adminViewmodel.adminArray.contains(authManager.user?.email) {
-                educatorLogIn = true
-     
-        }
-        NavigationStack{
-            if showSignIn == true{
-                RootView()
+            VStack{
+                NavigationStack {
+                    if showSignIn {
+                        RootView()
+                    } else if !educatorLogIn {
+                        userSettings(showSignIn: $showSignIn)
+                    } else {
+                        UserPage(showSignIn: $showSignIn)
+                    }
+                }
             }
-            if showSignIn == false && educatorLogIn == false{
-                userSettings(showSignIn: $showSignIn)}
-        }
-        if showSignIn == false && educatorLogIn == true{
-            UserPage(showSignIn:$showSignIn)
+            .onAppear{
+                if AuthenticationManager.authManager.authState == .signedOut{
+                    showSignIn = true
+                }
+                else{
+                    if let userEmail = Auth.auth().currentUser?.email{
+                        if adminViewmodel.adminArray.contains(userEmail) {
+                            educatorLogIn = true
+                        }
+                    }
+
+                let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
+                    print(authUser)
+                showSignIn = authUser == nil
+            }
         }
     }
+    
 }
-
-

@@ -30,6 +30,7 @@ struct SignInView: View {
     @State private var passwordLength = false
     @State private var navigateLogin:Bool = false
     @State private var errorText = ""
+    @State private var errorTextAlert = false
     @StateObject var viewmodel = signInViewmodel()
     
     var body: some View {
@@ -38,7 +39,7 @@ struct SignInView: View {
         Text("Sign Up")
             .font(.system(size:40))
         VStack {
-            TextField("Username", text: $viewmodel.email)
+            TextField("Email", text: $viewmodel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
@@ -57,7 +58,6 @@ struct SignInView: View {
             Button(action:{
                 if viewmodel.password.count < 6{
                     passwordLength = true
-                    showAlert = true
                 }
                 else{
                     passwordLength = false
@@ -68,6 +68,7 @@ struct SignInView: View {
                         
                         do{
                             try await viewmodel.signUp()
+                            signIn = true
                             return
                         }
                         catch{
@@ -89,6 +90,7 @@ struct SignInView: View {
                             default:
                                 errorText = "Sorry an unknown error has occured"
                             }
+                            errorTextAlert = true
                             print(errorText)
                     }
                         }
@@ -107,12 +109,15 @@ struct SignInView: View {
                     .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                     .cornerRadius(8)
             })
+            .alert(isPresented: $errorTextAlert){
+                Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
+            }
             
             .padding()
         }
         .padding()
         .alert(isPresented:$passwordLength){
-            Alert(title:Text("error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
+            Alert(title:Text("Error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text("Passwords do not match"), dismissButton: .default(Text("OK")))
@@ -121,7 +126,7 @@ struct SignInView: View {
     }
     
     func checkPassword() {
-        if password != confirmPassword {
+        if viewmodel.password != confirmPassword {
             showAlert = true
             return
         }

@@ -7,6 +7,7 @@ struct UserPage: View{
     @State var showAlert:Bool = false
     @Binding var showSignIn: Bool
     @State var showResetText = false
+    @StateObject var settingsViewmodel = UserSettingsViewmodel()
     var body: some View{
         
         ScrollView{
@@ -57,7 +58,7 @@ struct UserPage: View{
                                 action: {
                                     Task{
                                         do{
-                                             settingsViewmodel.logOut()
+                                            try settingsViewmodel.logOut()
                                             showSignIn = true
                                         }
                                         catch{
@@ -70,8 +71,15 @@ struct UserPage: View{
                         )}
                     
                     Button(action: {
-                               settingsViewmodel.resetPassword()
-                        showResetText = true
+                        Task{
+                            do{
+                                try await settingsViewmodel.resetPassword()
+                                showResetText = true
+                            }
+                            catch{
+                                print(error)
+                            }
+                        }
                     }, label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
