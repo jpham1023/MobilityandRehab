@@ -26,9 +26,9 @@ class RehabViewmodel: ObservableObject{
         databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.videoId)
         databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.notes)
         databaseref.child("Region").child(currentJointType.Regions).child(currentJointType.Joint).child(currentExerciseType.Exercise).setValue(currentExerciseType.video)
-
-
-
+        
+        
+        
     }
     
     func pullfromfirebase() {

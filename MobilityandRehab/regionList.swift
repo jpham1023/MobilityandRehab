@@ -22,9 +22,9 @@ struct regionList: View{
                             Text(currentRegion)
                                 .font(.system(size:100))
                                 .foregroundStyle(.white)
-                                
+                            
                         }
-//
+                        //
                         .frame(height:250)
                     }
                     .background(Image(regionBackgroundArray[currentRegion]!))

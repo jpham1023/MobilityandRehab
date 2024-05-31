@@ -23,9 +23,9 @@ struct SignInView: View {
     var body: some View {
         VStack {
             Image(systemName: "person.badge.plus")
-                       .font(.system(size:50))
-                   Text("Sign Up")
-                       .font(.system(size:40))
+                .font(.system(size:50))
+            Text("Sign Up")
+                .font(.system(size:40))
             TextField("Username", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -46,7 +46,7 @@ struct SignInView: View {
                     .cornerRadius(8)
             }
             NavigationLink("", destination:LogInView(), isActive:$navigateLogin)
-            .padding()
+                .padding()
         }
         .padding()
         .alert(isPresented: $showAlert) {

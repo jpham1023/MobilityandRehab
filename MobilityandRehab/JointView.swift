@@ -20,9 +20,9 @@ struct JointView: View{
                         HStack{
                             NavigationLink(destination:ExerciseList(currentJoint: currentJoint.Joint)){
                                 Text(currentJoint.Joint)
-                                   .font(.system(size:100))
-                                   .font(.title)
-                                   .foregroundStyle(.white)
+                                    .font(.system(size:100))
+                                    .font(.title)
+                                    .foregroundStyle(.white)
                                 
                             }
                         }
@@ -34,11 +34,6 @@ struct JointView: View{
                 .ignoresSafeArea()
                 .cornerRadius(10)
             }
-            //            .background {
-            //                Color(red: 177/255, green: 176/255, blue: 176/255)
-            //                    .ignoresSafeArea()
-            //
-            //            }
             .scrollContentBackground(.hidden)
             .navigationTitle("Joints")
         }
