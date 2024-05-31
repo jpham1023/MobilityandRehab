@@ -21,13 +21,30 @@ struct AuthDataResultModel{
 
 final class AuthenticationManager{
     static let authManager = AuthenticationManager()
-    init(){ }
+    init(){
+          configureAuthStateChanges()
+      }
+     func configureAuthStateChanges(){
+         authStateHandle = Auth.auth().addStateDidChangeListener{ auth, user in
+              self.updateUserState(user:user)
+          }
+      }
     func getAuthenticatedUser() throws -> AuthDataResultModel{
         guard let user = Auth.auth().currentUser else{
             throw URLError(.badServerResponse)
         }
         return AuthDataResultModel(user:user)
     }
+    func updateUserState(user: User?){
+         self.user = user
+          let isUserAuthenticated = user != nil
+         if isUserAuthenticated{
+              self.authState = .signedIn
+          }
+       else{
+              self.authState = .signedOut
+          }
+      }
     
     func resetPassword(email:String) async throws{
         try await Auth.auth().sendPasswordReset(withEmail: email)
