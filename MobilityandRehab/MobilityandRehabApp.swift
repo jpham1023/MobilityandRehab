@@ -20,7 +20,7 @@ struct MobilityandRehabApp: App {
             tabBar()
                 .environmentObject(viewobject)
                 .modelContainer(for: userLogged.self)
-
+            
         }
     }
 }

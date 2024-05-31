@@ -73,9 +73,10 @@ struct LogInView: View {
                     .cornerRadius(8)
             }
             .padding()
+            NavigationLink("", destination: UserPage(), isActive: $userNavigate)
         }
         .padding()
     }
     
-
+    
 }
