@@ -45,11 +45,12 @@ struct ExerciseView: View {
                                     .font(.system(size:38))
                                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
                                     .padding()
+                                ScrollView{
                                 Text(Currentexercise.notes)
                                     .font(.system(size:20))
                                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
-                                
-                                
+                                }
+                                .ignoreSafeArea()
                                 Spacer()
                                 Text("Mark as done")
                                     .font(.system(size:35))
