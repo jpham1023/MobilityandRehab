@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+
 @MainActor
 class UserSettingsViewmodel: ObservableObject{
     func logOut() throws{
@@ -21,6 +21,7 @@ class UserSettingsViewmodel: ObservableObject{
     struct userSettings: View{
         @StateObject var settingsViewmodel = UserSettingsViewmodel()
         @Binding var showSignIn: Bool
+        @State var showAlert = false
         @State var showResetText = false
         var body: some View{
             VStack{
@@ -33,10 +34,6 @@ class UserSettingsViewmodel: ObservableObject{
                     .shadow(color: .white.opacity(0.3), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
             }
             .padding()
-            List(){
-                Section(header:Text("Assignments")){
-                }
-            }
             List(){
                 Section(header:Text("Settings")){
                     Button(action: {
@@ -53,8 +50,28 @@ class UserSettingsViewmodel: ObservableObject{
                         Text("Log Out")
                             .foregroundStyle(.white)
                     })
+                    .alert(isPresented: $showAlert) {
+                                           Alert(
+                                               title: Text("Log out"),
+                                               message: Text("Are you sure you want to log out?"),
+                                               primaryButton: .default(
+                                                   Text("Yes"),
+                                                   action: {
+                                                       Task{
+                                                           do{
+                                                                settingsViewmodel.logOut()
+                                                               showSignIn = true
+                                                           }
+                                                           catch{
+                                                               print("error")
+                                                           }
+                                                       }
+                                                   }
+                                               ),
+                                               secondaryButton: .default(Text("No"))
+                                           )}
                     Button(action: {
-                    //    settingsViewmodel.resetPassword()
+                        settingsViewmodel.resetPassword()
                         showResetText = true
                     }, label: {
                         Text("Reset Password")
