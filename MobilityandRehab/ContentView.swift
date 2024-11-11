@@ -34,6 +34,8 @@ struct ContentView: View {
                         .padding()
                         .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
                         .shadow(color: .white.opacity(0.7), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
+                    
+                    //displays the different quotes
                     VStack{
                         if quoteNum == 1{
                             Text("Believe you can and you are already halfway there \n-Theodore Roosevelt")
@@ -81,11 +83,19 @@ struct ContentView: View {
                                 .shadow(color: .black.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
                                 .shadow(color: .white.opacity(0.7), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
                         }
+                        
+                        
+                //information icon that displays the developers of app
                         Button(action: {
                         showingPopover = true
                     }, label: {
-                                Image(systemName: "info.circle.fill")
-                            .font(.system(size:25))
+                        VStack(){
+                            Spacer()
+                                .frame(height:50)
+                            Image(systemName: "info.circle.fill")
+                                .font(.system(size:25))
+                        }
+                        
                         .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
                                 })
                 .popover(isPresented: $showingPopover) {

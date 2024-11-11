@@ -1,3 +1,6 @@
+//shows educator screen where they have options to add youtube videos + log out
+
+// currrent functionality: add new youtube videos, assign youtube videos(have yet to install), log out, and reset password
 import SwiftUI
 import SwiftData
 import FirebaseAuth
@@ -19,6 +22,9 @@ struct UserPage: View{
                 
             }
             .padding()
+            
+            
+            //takes the educator to the page to add new youtube videos
             NavigationLink(destination: addVideo()) {
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
@@ -29,6 +35,8 @@ struct UserPage: View{
                         .foregroundStyle(.white)
                 }
             }
+            
+            //displays button that currently has no purpose
             ZStack{
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width:400, height:75)
@@ -37,6 +45,8 @@ struct UserPage: View{
                     .bold()
                     .foregroundStyle(.white)
             }
+            
+            //button to log out
                     Button(action: {
                         showAlert = true
                     }, label: {
@@ -49,6 +59,8 @@ struct UserPage: View{
                                 .foregroundStyle(.white)
                         }
                     })
+            
+            //alert that double checks if the user wants to log out
                     .alert(isPresented: $showAlert) {
                         Alert(
                             title: Text("Log out"),
@@ -69,6 +81,8 @@ struct UserPage: View{
                             ),
                             secondaryButton: .default(Text("No"))
                         )}
+            
+            //button to reset password
                     
                     Button(action: {
                         Task{

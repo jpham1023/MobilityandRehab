@@ -3,7 +3,7 @@
 //  MobilityandRehab
 //
 //  Created by Jenny Pham on 5/20/24.
-//
+//for the educators to be able to add youtube videos
 
 import SwiftUI
 import Foundation
@@ -25,6 +25,8 @@ struct addVideo: View{
     @State var newJoint = false
     @State var customJointSelected = false
     @State var customJoint = ""
+    
+    
     @EnvironmentObject var viewobject:RehabViewmodel
     var idGenerator = videoIDGenerator()
     var body: some View{
@@ -259,6 +261,7 @@ struct addVideo: View{
     }
 }
 
+//generates the youtube video and displays it
 struct videoIDGenerator{
     func extractVideoId(url:String) ->String?{
         let urlPattern = "(?:https?:\\/\\/)?(?:www\\.)?(?:youtube\\.com\\/(?:[^\\/\\n\\s]+\\/\\S+\\/(?:videos)?|(?:v|e(?:mbed)?)\\/|\\S*?[?&]v=)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})"

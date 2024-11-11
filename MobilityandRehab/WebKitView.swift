@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import WebKit
 
+//displays youtube video
+
 struct WebView: UIViewRepresentable{
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let youtubeURL = "https://www.youtube.com/embed/\(videoID)?playsinline=1"

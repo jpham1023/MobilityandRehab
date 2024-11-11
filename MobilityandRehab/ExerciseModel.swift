@@ -25,6 +25,8 @@ class Exercise {
     var videoId:String
     
 }
+
+
 struct jointType: Hashable{
     init(Joint: String, Regions: String) {
         self.Regions = Regions

@@ -3,7 +3,7 @@
 //  MobilityandRehab
 //
 //  Created by Teodor Djuric on 2/2/24.
-//
+// view of a single exercise video
 
 import Foundation
 import SwiftUI
@@ -40,6 +40,7 @@ struct ExerciseView: View {
                                     .frame(width: 750, height: 550, alignment: .center)
                                 Spacer()
                             }
+                            Spacer()
                             VStack{
                                 Text("Instructions")
                                     .font(.system(size:38))
@@ -50,7 +51,7 @@ struct ExerciseView: View {
                                     .font(.system(size:20))
                                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
                                 }
-                                .ignoreSafeArea()
+                                .ignoresSafeArea()
                                 Spacer()
                                 Text("Mark as done")
                                     .font(.system(size:35))

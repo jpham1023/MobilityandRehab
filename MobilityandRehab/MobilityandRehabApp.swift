@@ -17,6 +17,7 @@ struct MobilityandRehabApp: App {
     var body: some Scene {
         @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
         WindowGroup {
+            //creates the tab screen at the bottom
             tabBar()
                 .environmentObject(viewobject)
                 .modelContainer(for: userLogged.self)

@@ -1,4 +1,4 @@
-//
+//deals with firebase, storing the adding to firebase and pulling
 //  rehabViewModel.swift
 //  MobilityandRehab
 //

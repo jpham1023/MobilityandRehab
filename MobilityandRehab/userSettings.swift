@@ -3,11 +3,13 @@
 //  MobilityandRehab
 //
 //  Created by Guest User on 5/30/24.
-//
+//what a noneducator user sees when signed in
 
 import SwiftUI
 
 @MainActor
+
+
 class UserSettingsViewmodel: ObservableObject{
     func logOut() throws{
         try AuthenticationManager.authManager.signOut()
@@ -19,7 +21,10 @@ class UserSettingsViewmodel: ObservableObject{
             try await AuthenticationManager.authManager.resetPassword(email:email)
         }
     }
-    struct userSettings: View{
+
+
+
+struct userSettings: View{
         @StateObject var settingsViewmodel = UserSettingsViewmodel()
         @Binding var showSignIn: Bool
         @State var showAlert = false
@@ -38,7 +43,6 @@ class UserSettingsViewmodel: ObservableObject{
             }
             .padding()
             List(){
-               Text("Settings")
                     Button(action: {
                         Task{
                             do{

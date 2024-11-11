@@ -3,7 +3,7 @@
 //  MobilityandRehab
 //
 //  Created by Jenny Pham on 5/28/24.
-//
+//firebase authentication manager for signign in users with an email and a password
 
 import SwiftUI
 import FirebaseAuth

@@ -3,7 +3,7 @@
 //  MobilityandRehab
 //
 //  Created by Marcus Lustria on 2/2/24.
-//
+// displays the list of exercises
 
 import Foundation
 import SwiftUI

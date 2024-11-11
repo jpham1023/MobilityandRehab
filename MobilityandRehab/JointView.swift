@@ -3,7 +3,7 @@
 //  MobilityandRehab
 //
 //  Created by Dylan Domeracki on 2/2/24.
-//
+// view of all the joints
 
 import Foundation
 import SwiftUI

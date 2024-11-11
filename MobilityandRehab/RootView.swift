@@ -1,4 +1,4 @@
-//
+//Root user View that all users see when they are not signed in
 //  RootView.swift
 //  MobilityandRehab
 //
@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View{
     @State var showLogIn: Bool = false
-    @State var showSignIn: Bool = false
+    @State var showSignUp: Bool = false
     var body: some View{
         ZStack{
             Image("Exercise")
@@ -23,12 +23,14 @@ struct RootView: View{
                     .font(.system(size:45))
                     .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
                 Spacer()
+                
+                
                 HStack{
                     Spacer()
                         .frame(width:550)
                     VStack{
                         Button(action:{
-                            triggerSignIn()
+                            triggerSignUp()
                         }, label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15)
@@ -66,17 +68,20 @@ struct RootView: View{
             
             
         }
+        //if user clicked log in, display the log in view
         .sheet(isPresented: $showLogIn, onDismiss: {showLogIn = false}, content: {
             LogInView()
         })
-        .sheet(isPresented: $showSignIn, onDismiss: {
-            showSignIn = false
+        
+        //if user clicked signUp a signup page will appear and same thing with Log in
+        .sheet(isPresented: $showSignUp, onDismiss: {
+            showSignUp = false
         }, content: {
                 SignInView()
         })
     }
-    func triggerSignIn(){
-        showSignIn = true
+    func triggerSignUp(){
+        showSignUp = true
     }
     func triggerLogIn(){
         showLogIn = true
