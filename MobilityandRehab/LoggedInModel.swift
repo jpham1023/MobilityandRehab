@@ -2,7 +2,7 @@
 //  LoggedInModel.swift
 //  MobilityandRehab
 //
-//  Created by Jenny Pham on 5/20/24.
+//  Created by Quyen T. Pham on 11/21/24.
 //
 
 import Foundation
@@ -10,11 +10,8 @@ import SwiftData
 
 @Model
 class userLogged{
-    var loggedIn: Bool
+    var loggedIn:Bool
     init(loggedIn:Bool){
         self.loggedIn = loggedIn
     }
-    
-    
 }
-

@@ -77,7 +77,7 @@ struct RootView: View{
         .sheet(isPresented: $showSignUp, onDismiss: {
             showSignUp = false
         }, content: {
-                SignInView()
+            SignInView()
         })
     }
     func triggerSignUp(){

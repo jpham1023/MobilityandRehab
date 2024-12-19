@@ -4,6 +4,8 @@
 //
 //  Created by Jenny Pham on 5/31/24.
 //
+//determines if we should navigate to educator or normal user page
+
 
 import SwiftUI
 import FirebaseAuth
@@ -25,35 +27,34 @@ class UserViewmodel : ObservableObject{
     }
 }
 struct UserView: View {
+    @EnvironmentObject var appState:AppState
     @StateObject var adminViewmodel = UserViewmodel()
-    @State private var showSignIn:Bool = true
     @State private var educatorLogIn = false
     var body: some View{
-            VStack{
-                NavigationStack {
-                    if showSignIn {
-                        RootView()
-                    } else if !educatorLogIn {
-                        userSettings(showSignIn: $showSignIn)
-                    } else {
-                        UserPage(showSignIn: $showSignIn)
-                    }
+        NavigationStack {
+            if appState.userIsSignedIn {
+                if appState.educatorLogIn {
+                    UserPage()
+                } else {
+                    userSettings()
                 }
+            } else {
+                RootView()
             }
+        }
             .onAppear{
                 if AuthenticationManager.authManager.authState == .signedOut{
-                    showSignIn = true
+                    appState.userIsSignedIn = false
                 }
                 else{
                     if let userEmail = Auth.auth().currentUser?.email{
                         if adminViewmodel.adminArray.contains(userEmail) {
-                            educatorLogIn = true
+                            appState.educatorLogIn = true
                         }
                     }
 
                 let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
-                    print(authUser)
-                showSignIn = authUser == nil
+                    appState.userIsSignedIn = !(authUser == nil)
             }
         }
     }

@@ -8,7 +8,7 @@ import FirebaseAuth
 struct UserPage: View{
     @Query var userLogged: [userLogged]
     @State var showAlert:Bool = false
-    @Binding var showSignIn: Bool
+    @EnvironmentObject var appState: AppState
     @State var showResetText = false
     @StateObject var settingsViewmodel = UserSettingsViewmodel()
     var body: some View{
@@ -35,6 +35,7 @@ struct UserPage: View{
                         .foregroundStyle(.white)
                 }
             }
+            
             
             //displays button that currently has no purpose
             ZStack{
@@ -71,7 +72,7 @@ struct UserPage: View{
                                     Task{
                                         do{
                                             try settingsViewmodel.logOut()
-                                            showSignIn = true
+                                            appState.userIsSignedIn = false
                                         }
                                         catch{
                                             print("error")

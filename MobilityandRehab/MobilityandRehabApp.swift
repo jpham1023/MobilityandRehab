@@ -14,13 +14,16 @@ struct MobilityandRehabApp: App {
     init(){
         FirebaseApp.configure()
     }
+    @State var defaultTag = "one"
+    @StateObject var appLogIn = AppState()
     var body: some Scene {
         @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
         WindowGroup {
             //creates the tab screen at the bottom
-            tabBar()
+            tabBar(currNavigation: $defaultTag)
                 .environmentObject(viewobject)
                 .modelContainer(for: userLogged.self)
+                .environmentObject(appLogIn)
             
         }
     }

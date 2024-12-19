@@ -13,6 +13,7 @@ import FirebaseAuth
 struct LogInView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewobject: RehabViewmodel
+    @EnvironmentObject var appState: AppState
     @StateObject var signinviewmodel = signInViewmodel()
     @State var userNavigate = false
     @State var errorText = ""
@@ -39,7 +40,7 @@ struct LogInView: View {
                         do{
                             try await signinviewmodel.signIn()
                             success = true
-                            print("Sign in")
+                            appState.userIsSignedIn = true
                         }
                         catch{
                             let error = error as NSError
@@ -76,7 +77,6 @@ struct LogInView: View {
             }
             .padding()
         
-            NavigationLink("", destination: UserPage(showSignIn: $success), isActive: $userNavigate)
         }
         .padding()
     }

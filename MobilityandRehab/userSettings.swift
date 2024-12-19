@@ -26,7 +26,7 @@ class UserSettingsViewmodel: ObservableObject{
 
 struct userSettings: View{
         @StateObject var settingsViewmodel = UserSettingsViewmodel()
-        @Binding var showSignIn: Bool
+    @EnvironmentObject var appState: AppState
         @State var showAlert = false
         @State var showResetText = false
         @State var errorText = ""
@@ -47,7 +47,7 @@ struct userSettings: View{
                         Task{
                             do{
                                 try settingsViewmodel.logOut()
-                                showSignIn = true
+                                appState.userIsSignedIn = false
                             }
                             catch{
                                 errorText = "Unable to log out"
@@ -67,7 +67,7 @@ struct userSettings: View{
                                                        Task{
                                                            do{
                                                                try settingsViewmodel.logOut()
-                                                               showSignIn = true
+                                                               appState.userIsSignedIn = false
                                                            }
                                                            catch{
                                                                errorText = "unable to log out"

@@ -32,6 +32,7 @@ struct SignInView: View {
     @State private var errorText = ""
     @State private var errorTextAlert = false
     @StateObject var viewmodel = signInViewmodel()
+    @State private var currentNav:String = "one"
     
     var body: some View {
         Image(systemName: "person.badge.plus")
@@ -54,6 +55,7 @@ struct SignInView: View {
                 Text("Success!")
                     .bold()
                     .foregroundStyle(.green)
+                
             }
             Button(action:{
                 if viewmodel.password.count < 6{
@@ -69,10 +71,13 @@ struct SignInView: View {
                         do{
                             try await viewmodel.signUp()
                             signIn = true
+                            currentNav = "SignUp"
+                            tabBar(currNavigation: $currentNav)
                             return
                         }
                         catch{
-                        var error = error as NSError
+                        let error = error as NSError
+                            print(error)
                         if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
                             switch ErrorCode{
                             case .invalidEmail:
