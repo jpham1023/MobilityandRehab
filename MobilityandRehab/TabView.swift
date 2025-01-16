@@ -24,6 +24,7 @@ struct tabBar: View{
 
             .tabItem{
                 Image(systemName: "figure.flexibility")
+                   
             }
             
             //displays the user log in screen

@@ -4,12 +4,14 @@
 import SwiftUI
 import SwiftData
 import FirebaseAuth
+import FirebaseDatabase
 
 struct UserPage: View{
     @Query var userLogged: [userLogged]
     @State var showAlert:Bool = false
     @EnvironmentObject var appState: AppState
     @State var showResetText = false
+    @StateObject var adminViewmodel = UserViewmodel()
     @StateObject var settingsViewmodel = UserSettingsViewmodel()
     var body: some View{
         
@@ -73,6 +75,7 @@ struct UserPage: View{
                                         do{
                                             try settingsViewmodel.logOut()
                                             appState.userIsSignedIn = false
+                                            appState.educatorLogIn = false
                                         }
                                         catch{
                                             print("error")
@@ -114,5 +117,8 @@ struct UserPage: View{
         
         
     }
+    
+
+
 
 }

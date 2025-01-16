@@ -43,20 +43,18 @@ struct UserView: View {
             }
         }
             .onAppear{
-                if AuthenticationManager.authManager.authState == .signedOut{
-                    appState.userIsSignedIn = false
-                }
-                else{
-                    if let userEmail = Auth.auth().currentUser?.email{
-                        if adminViewmodel.adminArray.contains(userEmail) {
-                            appState.educatorLogIn = true
-                        }
+            if let userEmail = Auth.auth().currentUser?.email{
+            if adminViewmodel.adminArray.contains(userEmail) {
+                appState.educatorLogIn = true
+            }
                     }
 
                 let authUser = try? AuthenticationManager.authManager.getAuthenticatedUser()
                     appState.userIsSignedIn = !(authUser == nil)
-            }
+            
         }
     }
+    
+
     
 }

@@ -32,7 +32,9 @@ struct SignInView: View {
     @State private var errorText = ""
     @State private var errorTextAlert = false
     @StateObject var viewmodel = signInViewmodel()
+    @StateObject var adminViewmodel = UserViewmodel()
     @State private var currentNav:String = "one"
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         Image(systemName: "person.badge.plus")
@@ -52,59 +54,39 @@ struct SignInView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             if signIn{
-                Text("Success!")
+                Text("Success! User Created")
                     .bold()
                     .foregroundStyle(.green)
                 
             }
             Button(action:{
-                if viewmodel.password.count < 6{
-                    passwordLength = true
-                }
-                else{
-                    passwordLength = false
-                    checkPassword()
-                }
-                if passwordLength == false{
+                checkPassword()
+                if passwordLength == false && !showAlert{
                     Task{
                         
                         do{
                             try await viewmodel.signUp()
                             signIn = true
                             currentNav = "SignUp"
-                            tabBar(currNavigation: $currentNav)
+                            appState.userIsSignedIn = true
+                        if let userEmail = Auth.auth().currentUser?.email{
+                            if adminViewmodel.adminArray.contains(userEmail) {
+                                appState.educatorLogIn = true
+                            }
+                        }
                             return
                         }
                         catch{
                         let error = error as NSError
                             print(error)
-                        if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
-                            switch ErrorCode{
-                            case .invalidEmail:
-                                errorText = "Enter a valid email address"
-                            case .emailAlreadyInUse:
-                                errorText = "This email is already connected to an existing user. Try logging in"
-                            case .weakPassword:
-                                errorText = "Password is too weak. Enter a new one."
-                            case .networkError:
-                                errorText = "Network error. Could not connect to database. Try again later"
-                            case .tooManyRequests:
-                                errorText = "Too many requests. Try again later"
-                            case .internalError:
-                                errorText = "An internal error has occured"
-                            default:
-                                errorText = "Sorry an unknown error has occured"
-                            }
-                            errorTextAlert = true
-                            print(errorText)
-                    }
-                        }
-                        do{
-                            try await viewmodel.signIn()
-                        }
-                        catch{
+                            handleAuthError(error: error)
+              }
+            do{
+                try await viewmodel.signIn()
+            }
+                catch{
                             
-                        }
+            }
                     }
                 }
             }, label: {
@@ -114,15 +96,16 @@ struct SignInView: View {
                     .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                     .cornerRadius(8)
             })
-            .alert(isPresented: $errorTextAlert){
-                Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
-            }
+            
             
             .padding()
         }
         .padding()
         .alert(isPresented:$passwordLength){
             Alert(title:Text("Error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
+        }
+        .alert(isPresented: $errorTextAlert){
+            Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text("Passwords do not match"), dismissButton: .default(Text("OK")))
@@ -131,10 +114,42 @@ struct SignInView: View {
     }
     
     func checkPassword() {
+        // Check if password is too short
+        if viewmodel.password.count < 6 {
+            passwordLength = true
+            print("Password length too short")
+        }
+        // Check if passwords match
         if viewmodel.password != confirmPassword {
             showAlert = true
-            return
+            print("Passwords do not match")
+        } else {
+            passwordLength = false
+            showAlert = false
         }
+    }
+    
+    func handleAuthError(error:NSError){
+        if let ErrorCode = AuthErrorCode.Code(rawValue: error.code){
+            switch ErrorCode{
+            case .invalidEmail:
+                errorText = "Enter a valid email address"
+            case .emailAlreadyInUse:
+                errorText = "This email is already connected to an existing user. Try logging in"
+            case .weakPassword:
+                errorText = "Password is too weak. Enter a new one."
+            case .networkError:
+                errorText = "Network error. Could not connect to database. Try again later"
+            case .tooManyRequests:
+                errorText = "Too many requests. Try again later"
+            case .internalError:
+                errorText = "An internal error has occured"
+            default:
+                errorText = "Sorry an unknown error has occured"
+            }
+            errorTextAlert = true
+            print(errorText)
+    }
     }
     
 }

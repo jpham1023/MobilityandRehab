@@ -26,7 +26,7 @@ enum AuthState{
     case signedOut
 }
 @MainActor
-final class AuthenticationManager{
+final class AuthenticationManager: ObservableObject{
     private var authStateHandle: AuthStateDidChangeListenerHandle!
     static let authManager = AuthenticationManager()
     @Published  var authState = AuthState.signedOut
@@ -48,12 +48,7 @@ final class AuthenticationManager{
     func updateUserState(user: User?){
          let user = user
           let isUserAuthenticated = user != nil
-         if isUserAuthenticated{
-              self.authState = .signedIn
-          }
-       else{
-              self.authState = .signedOut
-          }
+        authState = isUserAuthenticated ? .signedIn : .signedOut
       }
     
     func resetPassword(email:String) async throws{
