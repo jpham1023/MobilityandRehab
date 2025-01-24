@@ -27,10 +27,12 @@ struct SignInView: View {
     @State private var confirmPassword: String = ""
     @State private var showAlert: Bool = false
     @State private var signIn:Bool = false
-    @State private var passwordLength = false
+    @State private var passwordLengthValid = false
     @State private var navigateLogin:Bool = false
+    @State private var showLengthMsg: Bool = false
     @State private var errorText = ""
     @State private var errorTextAlert = false
+    @State private var showEmailError = false
     @StateObject var viewmodel = signInViewmodel()
     @StateObject var adminViewmodel = UserViewmodel()
     @State private var currentNav:String = "one"
@@ -54,39 +56,45 @@ struct SignInView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             if signIn{
-                Text("Success! User Created")
+                Text("User Created!")
                     .bold()
                     .foregroundStyle(.green)
                 
             }
             Button(action:{
                 checkPassword()
-                if passwordLength == false && !showAlert{
-                    Task{
-                        
-                        do{
-                            try await viewmodel.signUp()
-                            signIn = true
-                            currentNav = "SignUp"
-                            appState.userIsSignedIn = true
-                        if let userEmail = Auth.auth().currentUser?.email{
-                            if adminViewmodel.adminArray.contains(userEmail) {
-                                appState.educatorLogIn = true
+                if passwordLengthValid == true && !showAlert {
+                    if !viewmodel.email.contains("@") || !viewmodel.email.contains("."){
+                        showEmailError = true
+                    }
+                    else{
+                        Task{
+                            do{
+                                try await viewmodel.signUp()
+                                signIn = true
+                                currentNav = "SignUp"
+                                appState.userIsSignedIn = true
+                                if let userEmail = Auth.auth().currentUser?.email{
+                                    if adminViewmodel.adminArray.contains(userEmail) {
+                                        appState.educatorLogIn = true
+                                    }
+                                }
+                                return
+                            }
+                            catch{
+                                let error = error as NSError
+                                print(error)
+                                handleAuthError(error: error)
+                            }
+                            if passwordLengthValid == true{
+                                do{
+                                    try await viewmodel.signIn()
+                                }
+                                catch{
+                                    
+                                }
                             }
                         }
-                            return
-                        }
-                        catch{
-                        let error = error as NSError
-                            print(error)
-                            handleAuthError(error: error)
-              }
-            do{
-                try await viewmodel.signIn()
-            }
-                catch{
-                            
-            }
                     }
                 }
             }, label: {
@@ -97,16 +105,20 @@ struct SignInView: View {
                     .cornerRadius(8)
             })
             
+            if showLengthMsg == true{
+                Text("Password must be at least 6 characters")
+                .foregroundStyle(Color.red)            }
+            if showEmailError == true{
+                Text("Enter a valid email")
+                    .foregroundStyle(Color.red)
+            }
+            if errorTextAlert == true{
+                Text(errorText)
+            }
             
-            .padding()
+            
         }
         .padding()
-        .alert(isPresented:$passwordLength){
-            Alert(title:Text("Error"), message: Text("Password must be 6 characters"),dismissButton: .default(Text("Ok")))
-        }
-        .alert(isPresented: $errorTextAlert){
-            Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
-        }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text("Passwords do not match"), dismissButton: .default(Text("OK")))
         }
@@ -116,15 +128,16 @@ struct SignInView: View {
     func checkPassword() {
         // Check if password is too short
         if viewmodel.password.count < 6 {
-            passwordLength = true
+            passwordLengthValid = false
+            showLengthMsg = true
             print("Password length too short")
         }
         // Check if passwords match
-        if viewmodel.password != confirmPassword {
+        else if viewmodel.password != confirmPassword {
             showAlert = true
             print("Passwords do not match")
         } else {
-            passwordLength = false
+            passwordLengthValid = true
             showAlert = false
         }
     }
