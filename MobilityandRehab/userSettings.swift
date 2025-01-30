@@ -29,6 +29,7 @@ class UserSettingsViewmodel: ObservableObject{
 struct userSettings: View{
     @StateObject var settingsViewmodel = UserSettingsViewmodel()
     @StateObject var adminViewmodel = UserViewmodel()
+    @StateObject var signinviewmodel = signInViewmodel()
     @EnvironmentObject var appState: AppState
     @State var showAlert = false
     @State var showResetText = false
@@ -36,21 +37,20 @@ struct userSettings: View{
     @State var showErrorAlert = false
     var body: some View{
         VStack{
+            Spacer()
+                .frame(height:75)
             Image(systemName: "figure.wave")
                 .font(.system(size:60))
             Text("Welcome Back!")
                 .font(.system(size:60))
                 .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-                .shadow(color: .black.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
-                .shadow(color: .white.opacity(0.3), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: -5, y: -5)
         }
         .padding()
         List(){
             Button(action: {
                 Task{
                     do{
-                        try settingsViewmodel.logOut()
-                        appState.userIsSignedIn = false
+                       showAlert = true
                         
                     }
                     catch{
@@ -58,9 +58,11 @@ struct userSettings: View{
                     }
                 }
             }, label: {
-                Text("Log Out")
+                Text("Log out")
                     .foregroundStyle(.white)
+                    .font(.system(size:30))
             })
+            .frame(height:50)
             .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Log out"),
@@ -71,6 +73,7 @@ struct userSettings: View{
                             Task{
                                 do{
                                     try settingsViewmodel.logOut()
+                                    print(signinviewmodel.email)
                                     appState.userIsSignedIn = false
                                     appState.educatorLogIn = false
                                 }
@@ -87,6 +90,7 @@ struct userSettings: View{
                 Task{
                     do{
                         try await settingsViewmodel.resetPassword()
+                        showResetText = true
                     }
                     catch{
                         errorText = "Cannot reset Password try again"
@@ -95,14 +99,16 @@ struct userSettings: View{
                 }
             }, label: {
                 Text("Reset Password")
+                    .font(.system(size:30))
             })
-            
+            .frame(height:50)
             .alert(isPresented: $showResetText) {
-                return  Alert(title:Text("Success"), message: Text("Check email to reset your password"),dismissButton: .default(Text("Ok")))
+                return  Alert(title:Text("Done!"), message: Text("Check email to reset your password"),dismissButton: .default(Text("Ok")))
             }
+            
         }
-        .alert(isPresented: $showErrorAlert){
-            return Alert(title:Text("Error"), message: Text(errorText), dismissButton: .default(Text("Ok")))
+        if showErrorAlert{
+            Text(errorText)
         }
     }
     

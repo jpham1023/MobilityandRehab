@@ -53,6 +53,7 @@ struct ExerciseView: View {
                                 }
                                 .ignoresSafeArea()
                                 Spacer()
+                                    .frame(height:50)
                                 Text("Mark as done")
                                     .font(.system(size:35))
                                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
@@ -65,6 +66,7 @@ struct ExerciseView: View {
                                 }
                                 
                                 Spacer()
+                                    .frame(height:50)
                                 Image("HerseyLogo")
                                     .resizable()
                                     .scaledToFit()

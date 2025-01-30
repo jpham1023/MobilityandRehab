@@ -113,7 +113,8 @@ struct SignInView: View {
                     .foregroundStyle(Color.red)
             }
             if errorTextAlert == true{
-                Text(errorText)
+                let firstSentence = errorText.prefix { $0 != "." } + "."
+                Text(firstSentence)
             }
             
             
