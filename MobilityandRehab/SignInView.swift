@@ -79,6 +79,7 @@ struct SignInView: View {
                                         appState.educatorLogIn = true
                                     }
                                 }
+                                
                                 return
                             }
                             catch{

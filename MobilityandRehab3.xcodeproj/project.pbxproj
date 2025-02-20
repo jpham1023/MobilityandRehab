@@ -23,7 +23,7 @@
 		69BEFEB02C0630CF000A1B26 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEFEAF2C0630CF000A1B26 /* RootView.swift */; };
 		69F306112BED2C170032773F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 69F306102BED2C170032773F /* FirebaseDatabase */; };
 		69F306132BED2C170032773F /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 69F306122BED2C170032773F /* FirebaseDatabaseSwift */; };
-		A71F36052CEFD84D00D7F897 /* LoggedInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F36042CEFD84D00D7F897 /* LoggedInModel.swift */; };
+		A76EC94E2D6529C70099FAE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76EC94D2D6529C70099FAE3 /* UserInfo.swift */; };
 		A77A91EF2D147048005CF5B8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A91EE2D147048005CF5B8 /* AppState.swift */; };
 		ACFE025E2C08F2370073FDE4 /* userSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE025D2C08F2370073FDE4 /* userSettings.swift */; };
 		BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67FD452B35DB5D004C38F1 /* MobilityandRehabApp.swift */; };
@@ -50,7 +50,7 @@
 		6968FBFD2C0A0A43009C38A8 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		69BEFEAB2C062E55000A1B26 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		69BEFEAF2C0630CF000A1B26 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		A71F36042CEFD84D00D7F897 /* LoggedInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInModel.swift; sourceTree = "<group>"; };
+		A76EC94D2D6529C70099FAE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A77A91EE2D147048005CF5B8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		ACFE025D2C08F2370073FDE4 /* userSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userSettings.swift; sourceTree = "<group>"; };
 		BE67FD422B35DB5D004C38F1 /* MobilityandRehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityandRehab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +110,6 @@
 				6900B4B52BFB7DF200CF33F9 /* addVideo.swift */,
 				6968FBFD2C0A0A43009C38A8 /* UserView.swift */,
 				6900B4B12BFB7D3100CF33F9 /* TabView.swift */,
-				A71F36042CEFD84D00D7F897 /* LoggedInModel.swift */,
 				6900B4B32BFB7D5600CF33F9 /* UserPage.swift */,
 				BE67FD472B35DB5D004C38F1 /* ContentView.swift */,
 				69BEFEAF2C0630CF000A1B26 /* RootView.swift */,
@@ -119,6 +118,7 @@
 				BE67FD532B35E1D7004C38F1 /* ExerciseModel.swift */,
 				BE67FD552B35E4B3004C38F1 /* RehabViewModel.swift */,
 				D90C06332B6D52E700667E60 /* ExerciseView.swift */,
+				A76EC94D2D6529C70099FAE3 /* UserInfo.swift */,
 				4A4E217C2B6D51C100A40944 /* JointView.swift */,
 				476EED4F2B6D586A008D8824 /* ExerciseList.swift */,
 				A77A91EE2D147048005CF5B8 /* AppState.swift */,
@@ -229,8 +229,8 @@
 				69BEFEB02C0630CF000A1B26 /* RootView.swift in Sources */,
 				47CC74A32B850AE600740A81 /* WebKitView.swift in Sources */,
 				BE67FD482B35DB5D004C38F1 /* ContentView.swift in Sources */,
+				A76EC94E2D6529C70099FAE3 /* UserInfo.swift in Sources */,
 				BE67FD562B35E4B3004C38F1 /* RehabViewModel.swift in Sources */,
-				A71F36052CEFD84D00D7F897 /* LoggedInModel.swift in Sources */,
 				4AAFB06E2BF269AA00C01BB1 /* SignInView.swift in Sources */,
 				A77A91EF2D147048005CF5B8 /* AppState.swift in Sources */,
 				1196C1EE2B9A27340050E795 /* regionList.swift in Sources */,
