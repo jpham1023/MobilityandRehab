@@ -12,7 +12,7 @@ struct ExerciseView: View {
     
     @EnvironmentObject var viewobject:RehabViewmodel
     var exerciseName: String
-    @State var tapped: Bool = false
+    @State var markAsDone: Bool = false
     
     var body: some View {
         VStack{
@@ -58,13 +58,24 @@ struct ExerciseView: View {
                                     .font(.system(size:35))
                                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
                                 Button {
-                                    tapped = !tapped
+                                    markAsDone = true
                                 } label: {
                                     Image(systemName:"square.fill")
-                                        .foregroundStyle(tapped ? Color.green : Color.gray)
+                                        .foregroundStyle(Color.gray) //tapped ? Color.green : Color.gray
                                         .font(.system(size:40))
                                 }
-                                
+                                .alert(isPresented: $markAsDone) {
+                                    Alert(
+                                        title: Text("Mark exercise as done"),
+                                        message: Text("Are you sure you want to mark as done?"),
+                                        primaryButton: .default(
+                                            Text("Yes"),
+                                            action: {
+                                                
+                                            }
+                                        ),
+                                        secondaryButton: .default(Text("No"))
+                                    )}
                                 Spacer()
                                     .frame(height:50)
                                 Image("HerseyLogo")
@@ -81,7 +92,6 @@ struct ExerciseView: View {
                         }
                     }
                 }
-                
             }
             
         }

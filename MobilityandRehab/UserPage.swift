@@ -7,7 +7,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 struct UserPage: View{
-    @Query var userLogged: [userLogged]
     @State var showAlert:Bool = false
     @EnvironmentObject var appState: AppState
     @State var showResetText = false

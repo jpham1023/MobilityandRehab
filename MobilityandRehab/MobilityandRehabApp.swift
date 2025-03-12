@@ -22,7 +22,7 @@ struct MobilityandRehabApp: App {
             //creates the tab screen at the bottom
             tabBar(currNavigation: $defaultTag)
                 .environmentObject(viewobject)
-                .modelContainer(for: userLogged.self)
+             //   .modelContainer(for: userLogged.self)
                 .environmentObject(appLogIn)
             
         }
