@@ -11,6 +11,8 @@ import SwiftUI
 struct ExerciseView: View {
     
     @EnvironmentObject var viewobject:RehabViewmodel
+    @EnvironmentObject var userInfoObject: UserInfoViewmodel
+    @EnvironmentObject var authManager: AuthenticationManager
     var exerciseName: String
     @State var markAsDone: Bool = false
     
@@ -96,4 +98,14 @@ struct ExerciseView: View {
             
         }
     }
+//    func handleMarkAsDoneAction() async {
+//        do {
+//            let authData = try await authManager.getAuthenticatedUser()
+//            let userEmail = authData.email
+//            let userInfo = UserInfoModel(exercise: CurrentExercise.exercise, watched: true)
+//            userInfoObject.addUserToFirebase(currentUser: userEmail, userData: userInfo)
+//        } catch {
+//            print("Error handling mark as done: \(error)")
+//        }
+//    }
 }

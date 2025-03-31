@@ -16,14 +16,18 @@ struct MobilityandRehabApp: App {
     }
     @State var defaultTag = "one"
     @StateObject var appLogIn = AppState()
+    @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
+    @StateObject var userInfoObject:UserInfoViewmodel = UserInfoViewmodel()
+    @StateObject var authManager:AuthenticationManager = AuthenticationManager()
     var body: some Scene {
-        @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
         WindowGroup {
             //creates the tab screen at the bottom
             tabBar(currNavigation: $defaultTag)
                 .environmentObject(viewobject)
              //   .modelContainer(for: userLogged.self)
                 .environmentObject(appLogIn)
+                .environmentObject(userInfoObject)
+                .environmentObject(authManager)
             
         }
     }
