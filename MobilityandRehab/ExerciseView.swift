@@ -11,10 +11,7 @@ import SwiftUI
 struct ExerciseView: View {
     
     @EnvironmentObject var viewobject:RehabViewmodel
-    @EnvironmentObject var userInfoObject: UserInfoViewmodel
-    @EnvironmentObject var authManager: AuthenticationManager
     var exerciseName: String
-    @State var markAsDone: Bool = false
     
     var body: some View {
         VStack{
@@ -34,78 +31,91 @@ struct ExerciseView: View {
                             
                         }
                         .background(Image("Orange"))
+                        ExerciseVideoView(Currentexercise: Currentexercise)
                         
-                        HStack{
-                            VStack{
-                                Spacer()
-                                WebView(videoID: Currentexercise.videoId)
-                                    .frame(width: 750, height: 550, alignment: .center)
-                                Spacer()
-                            }
-                            Spacer()
-                            VStack{
-                                Text("Instructions")
-                                    .font(.system(size:38))
-                                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
-                                    .padding()
-                                ScrollView{
-                                Text(Currentexercise.notes)
-                                    .font(.system(size:20))
-                                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
-                                }
-                                .ignoresSafeArea()
-                                Spacer()
-                                    .frame(height:50)
-                                Text("Mark as done")
-                                    .font(.system(size:35))
-                                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
-                                Button {
-                                    markAsDone = true
-                                } label: {
-                                    Image(systemName:"square.fill")
-                                        .foregroundStyle(Color.gray) //tapped ? Color.green : Color.gray
-                                        .font(.system(size:40))
-                                }
-                                .alert(isPresented: $markAsDone) {
-                                    Alert(
-                                        title: Text("Mark exercise as done"),
-                                        message: Text("Are you sure you want to mark as done?"),
-                                        primaryButton: .default(
-                                            Text("Yes"),
-                                            action: {
-                                                
-                                            }
-                                        ),
-                                        secondaryButton: .default(Text("No"))
-                                    )}
-                                Spacer()
-                                    .frame(height:50)
-                                Image("HerseyLogo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height:100, alignment: .center)
-                                    
-                            }
-                            .frame(width:230,height:600)
-                            .overlay(){
-                                RoundedRectangle(cornerRadius:15)
-                                    .stroke(Color.gray)
-                            }
-                        }
                     }
                 }
             }
             
         }
     }
-//    func handleMarkAsDoneAction() async {
-//        do {
-//            let authData = try await authManager.getAuthenticatedUser()
-//            let userEmail = authData.email
-//            let userInfo = UserInfoModel(exercise: CurrentExercise.exercise, watched: true)
-//            userInfoObject.addUserToFirebase(currentUser: userEmail, userData: userInfo)
-//        } catch {
-//            print("Error handling mark as done: \(error)")
-//        }
-//    }
+}
+
+struct ExerciseVideoView: View{
+    var Currentexercise: Exercise
+    @State var markAsDone: Bool = false
+    @EnvironmentObject var userInfoObject: UserInfoViewmodel
+    @EnvironmentObject var authManager: AuthenticationManager
+    var body: some View{
+        HStack{
+            VStack{
+                Spacer()
+                WebView(videoID: Currentexercise.videoId)
+                    .frame(width: 750, height: 550, alignment: .center)
+                Spacer()
+            }
+            Spacer()
+            VStack{
+                Text("Instructions")
+                    .font(.system(size:38))
+                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                    .padding()
+                ScrollView{
+                Text(Currentexercise.notes)
+                    .font(.system(size:20))
+                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                }
+                .ignoresSafeArea()
+                Spacer()
+                    .frame(height:50)
+                Text("Mark as done")
+                    .font(.system(size:35))
+                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                Button {
+                    markAsDone = true
+                } label: {
+                    Image(systemName:"square.fill")
+                        .foregroundStyle(Color.gray) //tapped ? Color.green : Color.gray
+                        .font(.system(size:40))
+                }
+                .alert(isPresented: $markAsDone) {
+                    Alert(
+                        title: Text("Mark exercise as done"),
+                        message: Text("Are you sure you want to mark as done?"),
+                        primaryButton: .default(
+                            Text("Yes"),
+                            action: {
+                                Task{
+                                    await handleMarkAsDoneAction(curExercise: Currentexercise.Exercise)
+                                }
+                            }
+                        ),
+                        secondaryButton: .default(Text("No"))
+                    )}
+                Spacer()
+                    .frame(height:50)
+                Image("HerseyLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height:100, alignment: .center)
+                    
+            }
+            .frame(width:230,height:600)
+            .overlay(){
+                RoundedRectangle(cornerRadius:15)
+                    .stroke(Color.gray)
+            }
+        }
+    }
+    func handleMarkAsDoneAction(curExercise: String) async {
+        do {
+            let authData = try await authManager.getAuthenticatedUser()
+            let userEmail = authData.email
+            let userInfo = UserInfoModel(exercise: curExercise, watched: true)
+            try await userInfoObject.addUserToFirebase(currentUser: userEmail, userData: userInfo)
+        } catch {
+            print("Error handling mark as done: \(error)")
+        }
+    }
+
 }
