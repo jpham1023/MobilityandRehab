@@ -30,16 +30,16 @@ class UserInfoViewmodel: ObservableObject{
         let databaseref = Database.database().reference().child("Users")
         databaseref.getData{ myError, myDataSnapshot in
             for users in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
-                var tempArray: [UserInfoModel] = []
+                var tempUserDict: [String:Bool] = [:]
                 let username = users.key
                 guard let userInfo = users.value as? [String: Bool] else {return}
                 for videos in userInfo{
                     let video = videos.key
                     let watched = videos.value
                     let tempUserInfo = UserInfoModel(exercise: video,watched: watched)
-                    tempArray.append(tempUserInfo)
+                    tempUserDict[video] = watched
                 }
-                tempDict[username] = tempArray
+                tempDict[username] = tempUserDict
            }
             
             self.userInfo = tempDict

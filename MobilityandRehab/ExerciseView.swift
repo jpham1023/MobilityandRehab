@@ -111,8 +111,12 @@ struct ExerciseVideoView: View{
         do {
             let authData = try await authManager.getAuthenticatedUser()
             let userEmail = authData.email
-            let userInfo = UserInfoModel(exercise: curExercise, watched: true)
-            try await userInfoObject.addUserToFirebase(currentUser: userEmail, userData: userInfo)
+            if let atRange = userEmail.range(of:"@"){
+                let name = userEmail[..<atRange.lowerBound] //get name from email
+                let userInfo = UserInfoModel(exercise: curExercise, watched: true)
+                try await userInfoObject.addUserToFirebase(currentUser: String(name), userData: userInfo)
+
+            }
         } catch {
             print("Error handling mark as done: \(error)")
         }
