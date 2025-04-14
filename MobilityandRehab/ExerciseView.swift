@@ -44,9 +44,11 @@ struct ExerciseView: View {
 struct ExerciseVideoView: View{
     var Currentexercise: Exercise
     @State var markAsDone: Bool = false
+    @State var tapped:Bool = false
     @EnvironmentObject var userInfoObject: UserInfoViewmodel
     @EnvironmentObject var authManager: AuthenticationManager
     var body: some View{
+        
         HStack{
             VStack{
                 Spacer()
@@ -61,9 +63,16 @@ struct ExerciseVideoView: View{
                     .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
                     .padding()
                 ScrollView{
-                Text(Currentexercise.notes)
-                    .font(.system(size:20))
-                    .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                    if(Currentexercise.notes.isEmpty){
+                        Text("No notes")
+                            .font(.system(size:20))
+                            .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                    }
+                    else{
+                        Text(Currentexercise.notes)
+                            .font(.system(size:20))
+                            .foregroundStyle(Color(red:253/255,green: 102/255, blue:26/255))
+                    }
                 }
                 .ignoresSafeArea()
                 Spacer()
@@ -75,30 +84,48 @@ struct ExerciseVideoView: View{
                     markAsDone = true
                 } label: {
                     Image(systemName:"square.fill")
-                        .foregroundStyle(Color.gray) //tapped ? Color.green : Color.gray
+                        .foregroundStyle(tapped ? Color.green : Color.gray)
                         .font(.system(size:40))
                 }
                 .alert(isPresented: $markAsDone) {
-                    Alert(
-                        title: Text("Mark exercise as done"),
-                        message: Text("Are you sure you want to mark as done?"),
+                    if !tapped{
+                      return  Alert(
+                            title: Text("Mark exercise as done"),
+                            message: Text("Are you sure you want to mark as done?"),
+                            primaryButton: .default(
+                                Text("Yes"),
+                                action: {
+                                    Task{
+                                        await handleMarkAsDoneAction(curExercise: Currentexercise.Exercise,watched: true)
+                                    }
+                                }
+                            ),
+                            secondaryButton: .default(Text("No"))
+                        )
+                    }
+                    else{
+                        return Alert(
+                        title: Text("Unmark?"),
+                    message: Text("Would you like to unmark this exercise?"),
                         primaryButton: .default(
                             Text("Yes"),
                             action: {
                                 Task{
-                                    await handleMarkAsDoneAction(curExercise: Currentexercise.Exercise)
+                                    await handleMarkAsDoneAction(curExercise: Currentexercise.Exercise, watched:false)
                                 }
                             }
                         ),
                         secondaryButton: .default(Text("No"))
-                    )}
+                )
+                    }
+                    }
                 Spacer()
                     .frame(height:50)
                 Image("HerseyLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(height:100, alignment: .center)
-                    
+                
             }
             .frame(width:230,height:600)
             .overlay(){
@@ -106,20 +133,50 @@ struct ExerciseVideoView: View{
                     .stroke(Color.gray)
             }
         }
+        .onAppear {
+            // Check if the exercise has already been marked as done when the view appears
+            tapped = pullMarkAsDoneInfo(curExercise: Currentexercise.Exercise)
+        }
     }
-    func handleMarkAsDoneAction(curExercise: String) async {
+    
+    //updates firebase so the video is marked as done
+    func handleMarkAsDoneAction(curExercise: String, watched: Bool) async {
         do {
             let authData = try await authManager.getAuthenticatedUser()
             let userEmail = authData.email
             if let atRange = userEmail.range(of:"@"){
                 let name = userEmail[..<atRange.lowerBound] //get name from email
-                let userInfo = UserInfoModel(exercise: curExercise, watched: true)
+                let userInfo = UserInfoModel(exercise: curExercise, watched: watched)
                 try await userInfoObject.addUserToFirebase(currentUser: String(name), userData: userInfo)
+                if(watched == true){
+                    tapped = true
+                }
+                else{
+                    tapped = false
+                }
 
             }
         } catch {
             print("Error handling mark as done: \(error)")
         }
+    }
+    
+    //checks if this current exercise is marked as done in firebase
+    func pullMarkAsDoneInfo(curExercise:String) -> Bool{
+        let userArray = userInfoObject.userInfo.values
+        for data in userArray{
+            let data = data as! NSDictionary
+            for videos in data{
+                if (videos.key as! String == curExercise){
+                    if(videos.value as! Bool == true){
+                        tapped = true
+                        return true
+                    }
+                }
+            }
+        }
+        tapped = false
+        return false
     }
 
 }

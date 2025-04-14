@@ -204,7 +204,10 @@ struct addVideo: View{
                         .font(.system(size:30))
                         .padding()
                         Button(action: {
-                            if videoID == nil{
+                            if let videoIDString = videoID, videoIDString.isEmpty{
+                                failedVideoUsed = true
+                            }
+                            else if videoID == nil{
                                 failedVideoUsed = true
                             }
                             else{
