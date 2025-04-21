@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 
 class UserInfoViewmodel: ObservableObject{
-    @Published var userInfo:[String:Any] = [:]
+    @Published var userInfo:[String:NSDictionary] = [:]
     init(){
         pullUserData()
     }
@@ -26,7 +26,7 @@ class UserInfoViewmodel: ObservableObject{
     
     
     func pullUserData(){
-        var tempDict: [String: Any] = [:]
+        var tempDict: [String: NSDictionary] = [:]
         let databaseref = Database.database().reference().child("Users")
         databaseref.getData{ myError, myDataSnapshot in
             for users in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
@@ -39,7 +39,7 @@ class UserInfoViewmodel: ObservableObject{
                     let tempUserInfo = UserInfoModel(exercise: video,watched: watched)
                     tempUserDict[video] = watched
                 }
-                tempDict[username] = tempUserDict
+                tempDict[username] = tempUserDict as NSDictionary
            }
             
             self.userInfo = tempDict
