@@ -30,22 +30,38 @@ struct userSettings: View{
     @StateObject var settingsViewmodel = UserSettingsViewmodel()
     @StateObject var adminViewmodel = UserViewmodel()
     @StateObject var signinviewmodel = signInViewmodel()
+    @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var appState: AppState
     @State var showAlert = false
     @State var showResetText = false
     @State var errorText = ""
     @State var showErrorAlert = false
+    @State var userName:String = ""
     var body: some View{
         VStack{
             Spacer()
-                .frame(height:75)
-            Image(systemName: "figure.wave")
-                .font(.system(size:60))
-            Text("Welcome Back!")
-                .font(.system(size:60))
-                .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                .frame(height:25)
+            Image(systemName: "person.circle.fill")
+                .font(.system(size:100))
+        
+            if(!userName.isEmpty){
+                Spacer()
+                    .frame(height:10)
+                Text(userName)
+                    .font(.system(size:20))
+                Spacer()
+                    .frame(height:17)
+        }
+                Text("Welcome back!")
+                    .font(.system(size:55))
+                    .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
         }
         .padding()
+        .onAppear(){
+            Task{
+                await getUserName()
+            }
+        }
         List(){
             Button(action: {
                 Task{
@@ -109,6 +125,20 @@ struct userSettings: View{
         }
         if showErrorAlert{
             Text(errorText)
+        }
+    }
+    func getUserName() async {
+        do{
+            let authData = try await authManager.getAuthenticatedUser()
+            let userEmail = authData.email
+            if let atRange = userEmail.range(of:"@"){
+                let name = userEmail[..<atRange.lowerBound]
+                userName = String(name)
+                print(userName)
+            }
+        }
+        catch{
+            print("Error handling mark as done: \(error)")
         }
     }
     

@@ -12,15 +12,34 @@ struct UserPage: View{
     @State var showResetText = false
     @StateObject var adminViewmodel = UserViewmodel()
     @StateObject var settingsViewmodel = UserSettingsViewmodel()
+    @EnvironmentObject var authManager: AuthenticationManager
+    @State var userName:String = ""
     var body: some View{
         
         ScrollView{
+            Spacer()
+                .frame(height:25)
             VStack{
-                Image(systemName: "figure.wave")
-                    .font(.system(size:50))
-                Text("Welcome Back!")
-                    .font(.system(size:50))
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size:100))
+                if(!userName.isEmpty){
+                    Spacer()
+                    Text(userName)
+                        .font(.system(size:20))
+                    Spacer()
+                        .frame(height:25)
+                }
+                HStack{
+                    Text("Welcome back!")
+                        .font(.system(size:45))
+                }
                 
+                
+            }
+            .onAppear(){
+                Task{
+                    await getUserName()
+                }
             }
             .padding()
             
@@ -34,6 +53,7 @@ struct UserPage: View{
                     Text("Add youtube videos")
                         .bold()
                         .foregroundStyle(.white)
+                        .font(.system(size:25))
                 }
             }
             
@@ -46,6 +66,7 @@ struct UserPage: View{
                 Text("Assign Youtube Videos")
                     .bold()
                     .foregroundStyle(.white)
+                    .font(.system(size:25))
             }
             
             //button to log out
@@ -59,6 +80,7 @@ struct UserPage: View{
                             Text("Log Out")
                                 .bold()
                                 .foregroundStyle(.white)
+                                .font(.system(size:25))
                         }
                     })
             
@@ -105,6 +127,7 @@ struct UserPage: View{
                             Text("Reset Password")
                                 .bold()
                                 .foregroundStyle(.white)
+                                .font(.system(size:25))
                         }
                         
                     })
@@ -117,6 +140,20 @@ struct UserPage: View{
         
     }
     
+    func getUserName() async {
+        do{
+            let authData = try await authManager.getAuthenticatedUser()
+            let userEmail = authData.email
+            if let atRange = userEmail.range(of:"@"){
+                let name = userEmail[..<atRange.lowerBound]
+                userName = String(name)
+                print(userName)
+            }
+        }
+        catch{
+            print("Error handling mark as done: \(error)")
+        }
+    }
 
 
 
