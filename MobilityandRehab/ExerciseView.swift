@@ -144,7 +144,7 @@ struct ExerciseVideoView: View{
     //updates firebase so the video is marked as done
     func handleMarkAsDoneAction(curExercise: String, watched: Bool) async {
         do {
-            let authData = try await authManager.getAuthenticatedUser()
+            let authData = try authManager.getAuthenticatedUser()
             let userEmail = authData.email
             if let atRange = userEmail.range(of:"@"){
                 let name = userEmail[..<atRange.lowerBound] //get name from email
@@ -164,51 +164,28 @@ struct ExerciseVideoView: View{
     }
     
     //checks if this current exercise is marked as done in firebase
-//    func pullMarkAsDoneInfo(curExercise:String) -> Bool{
-//        let userArray = userInfoObject.userInfo.values
-//            print(userInfoObject.userInfo)
-//            for data in userArray{
-//                let data = data as! NSDictionary
-//                for videos in data{
-//                    if (videos.key as! String == curExercise){
-//                        if(videos.value as! Bool == true){
-//                            tapped = true
-//                            return true
-//                        }
-//                    }
-//                }
-//            }
-//            tapped = false
-//            return false
-//        }
-    
     func pullMarkAsDoneInfo(curExercise:String) async -> Bool{
-        let userArray = userInfoObject.userInfo
-        print(userInfoObject.userInfo)
+        let userDict = userInfoObject.userInfo
         //["asleep": ["Ankle Mobility": true], "qpham6326": ["Back and spine mobility": false, "Hip Flow Routine": true]]
-        for users in userArray{
-            print(users)
-            let users = users as! NSDictionary
-            //["asleep": ["Ankle Mobility": true]
-            let userName = users.allKeys.first
-            if await (checkUserNameStored(nameToCheck: userName as! String)){
-                for data in users{
-                    if (data.key as! String == curExercise){
-                        if(data.value as! Bool == true){
+        for (users,data) in userDict{
+            //if the users name is in firebase loop through their data
+            if await (checkUserNameStored(nameToCheck: users)){
+                print(users)
+                for(key,value) in data{
+                    if (key as! String == curExercise){
+                        print("yes")
+                        if(value as! Bool == true){
                             tapped = true
                             return true
                         }
                     }
                 }
-            }
+                }
             
         }
-        
-        
         tapped = false
         return false
     }
-    
     func checkUserNameStored(nameToCheck:String) async -> Bool{
         do{
             let authData = try await authManager.getAuthenticatedUser()

@@ -36,7 +36,6 @@ class UserInfoViewmodel: ObservableObject{
                 for videos in userInfo{
                     let video = videos.key
                     let watched = videos.value
-                    let tempUserInfo = UserInfoModel(exercise: video,watched: watched)
                     tempUserDict[video] = watched
                 }
                 tempDict[username] = tempUserDict as NSDictionary
