@@ -19,11 +19,13 @@ struct ContentView: View {
         VStack {
             NavigationStack{
                 ScrollView(){
+                    Spacer()
+                        .frame(height:30)
                     Text("REHAB ME")
                         .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
                         .font(.system(size: 80))
                         .bold()
-                        .frame(height:100)
+                        .frame(height:80)
                     Image("HerseyLogo")
                         .resizable()
                         .scaledToFit()

@@ -37,36 +37,36 @@ struct userSettings: View{
     @State var errorText = ""
     @State var showErrorAlert = false
     @State var userName:String = ""
+    @State var showConfirmReset = false
     var body: some View{
-        VStack{
+        ScrollView{
             Spacer()
-                .frame(height:25)
-            Image(systemName: "person.circle.fill")
-                .font(.system(size:100))
-        
-            if(!userName.isEmpty){
-                Spacer()
-                    .frame(height:10)
-                Text(userName)
-                    .font(.system(size:20))
-                Spacer()
-                    .frame(height:17)
-        }
+            VStack{
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size:100))
+                
+                if(!userName.isEmpty){
+                    Spacer()
+                        .frame(height:5)
+                    Text(userName)
+                        .font(.system(size:25))
+                        .bold()
+                    Spacer()
+                        .frame(height:20)
+                }
                 Text("Welcome back!")
-                    .font(.system(size:55))
-                    .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-        }
-        .padding()
-        .onAppear(){
-            Task{
-                await getUserName()
+                    .font(.system(size:45))
             }
-        }
-        List(){
+            .padding()
+            .onAppear(){
+                Task{
+                    await getUserName()
+                }
+            }
             Button(action: {
                 Task{
                     do{
-                       showAlert = true
+                        showAlert = true
                         
                     }
                     catch{
@@ -74,9 +74,15 @@ struct userSettings: View{
                     }
                 }
             }, label: {
-                Text("Log out")
-                    .foregroundStyle(.white)
-                    .font(.system(size:30))
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width:400, height:75)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    Text("Log out")
+                        .foregroundStyle(.white)
+                        .font(.system(size:30))
+                        .bold()
+                }
             })
             .frame(height:50)
             .alert(isPresented: $showAlert) {
@@ -94,42 +100,72 @@ struct userSettings: View{
                                     appState.educatorLogIn = false
                                 }
                                 catch{
-                                    errorText = "unable to log out"
+                                    errorText = error.localizedDescription
                                     showErrorAlert = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        showErrorAlert = false
+                                }
                                 }
                             }
                         }
                     ),
                     secondaryButton: .default(Text("No"))
                 )}
+            Spacer()
+                .frame(height:35)
             Button(action: {
                 Task{
-                    do{
-                        try await settingsViewmodel.resetPassword()
-                        showResetText = true
-                    }
-                    catch{
-                        errorText = "Cannot reset Password try again"
-                        showErrorAlert =  true
-                    }
+                showResetText = true
                 }
             }, label: {
-                Text("Reset Password")
-                    .font(.system(size:30))
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width:400, height:75)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    Text("Reset Password")
+                        .font(.system(size:30))
+                        .foregroundStyle(.white)
+                        .bold()
+                }
             })
             .frame(height:50)
             .alert(isPresented: $showResetText) {
-                return  Alert(title:Text("Done!"), message: Text("Check email to reset your password"),dismissButton: .default(Text("Ok")))
+                return  Alert(title:Text("Confirm"), message: Text("Are you sure you want to reset?"),  primaryButton: .default(
+                    Text("Yes"),
+                    action: {
+                        Task{
+                            do{
+                                try await settingsViewmodel.resetPassword()
+                                showConfirmReset = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    showConfirmReset = false
+                            }
+                            }
+                            catch{
+                                errorText = error.localizedDescription
+                                showErrorAlert = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    showErrorAlert = false
+                            }
+                            }
+                        }
+                    }
+                ),
+                secondaryButton: .default(Text("No")))
             }
-            
-        }
-        if showErrorAlert{
-            Text(errorText)
+            Spacer()
+                .frame(height:35)
+            if showErrorAlert{
+                Text("Error: \(errorText)")
+            }
+            if showConfirmReset{
+                Text("Done! Check your email to reset password")
+            }
         }
     }
     func getUserName() async {
         do{
-            let authData = try await authManager.getAuthenticatedUser()
+            let authData = try  authManager.getAuthenticatedUser()
             let userEmail = authData.email
             if let atRange = userEmail.range(of:"@"){
                 let name = userEmail[..<atRange.lowerBound]

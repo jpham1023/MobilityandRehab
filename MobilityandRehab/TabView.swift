@@ -13,6 +13,8 @@ struct tabBar: View{
             .tag("one")
             .tabItem{
                 Image(systemName: "house.fill")
+                    .resizable()
+                   .scaledToFit()
             }
             
             
