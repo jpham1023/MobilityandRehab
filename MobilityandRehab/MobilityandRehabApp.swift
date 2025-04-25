@@ -22,12 +22,18 @@ struct MobilityandRehabApp: App {
     var body: some Scene {
         WindowGroup {
             //creates the tab screen at the bottom
-            tabBar(currNavigation: $defaultTag)
+            
+            
+//            tabBar(currNavigation: $defaultTag)
+//                .environmentObject(viewobject)
+//                .environmentObject(appLogIn)
+//                .environmentObject(userInfoObject)
+//                .environmentObject(authManager)
+            AssignStudents()
                 .environmentObject(viewobject)
-             //   .modelContainer(for: userLogged.self)
-                .environmentObject(appLogIn)
-                .environmentObject(userInfoObject)
-                .environmentObject(authManager)
+                           .environmentObject(appLogIn)
+                           .environmentObject(userInfoObject)
+                           .environmentObject(authManager)
             
         }
     }
