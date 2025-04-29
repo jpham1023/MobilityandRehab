@@ -6,11 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseDatabase
 
 struct StudentAssignmentView: View {
     var username:String
+    @EnvironmentObject var userInfoObject: UserInfoViewmodel
+    @EnvironmentObject var authManager: AuthenticationManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let userDict = userInfoObject.userInfo
+        ForEach(userDict.keys.sorted(), id: \.self){ user in
+            if( user == username){
+                let data = userDict[user]
+               // print(data)
+            }
+        }
     }
 }
 

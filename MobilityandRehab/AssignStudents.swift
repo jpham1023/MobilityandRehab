@@ -26,7 +26,6 @@ struct AssignStudents: View{
 
         List{
             ForEach(userDict.keys.sorted(), id: \.self){ user in
-                let data = userDict[user]
                 HStack{
                     Image(systemName: "person.circle.fill")
                         .font(.system(size:75))
