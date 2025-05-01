@@ -15,12 +15,16 @@ struct StudentAssignmentView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     var body: some View {
         let userDict = userInfoObject.userInfo
-        ForEach(userDict.keys.sorted(), id: \.self){ user in
-            if( user == username){
-                let data = userDict[user]
-               // print(data)
-            }
-        }
+        ForEach(Array(arrayLiteral: userDict.keys.sorted()), id: \.self) { user in
+            if user as! String == username {
+                if let data = userDict[user.description] as? NSDictionary {
+                            ForEach(data.allKeys.sorted(), id: \.self) { exercise in
+                                Text(exercise as? String ?? "Unknown Exercise")
+                            }
+                        }
+                    }
+                }
+
     }
 }
 
