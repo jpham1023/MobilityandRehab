@@ -29,7 +29,7 @@ struct MobilityandRehabApp: App {
 //                .environmentObject(appLogIn)
 //                .environmentObject(userInfoObject)
 //                .environmentObject(authManager)
-            AssignStudents()
+            StudentAssignmentView(username:"asleep")
                 .environmentObject(viewobject)
                            .environmentObject(appLogIn)
                            .environmentObject(userInfoObject)

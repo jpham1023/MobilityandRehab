@@ -4,7 +4,7 @@
 //
 //  Created by Quyen T. Pham on 4/25/25.
 //
-
+import Foundation
 import SwiftUI
 import FirebaseAuth
 import FirebaseDatabase
@@ -15,16 +15,25 @@ struct StudentAssignmentView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     var body: some View {
         let userDict = userInfoObject.userInfo
-        ForEach(Array(arrayLiteral: userDict.keys.sorted()), id: \.self) { user in
-            if user as! String == username {
-                if let data = userDict[user.description] as? NSDictionary {
-                            ForEach(data.allKeys.sorted(), id: \.self) { exercise in
-                                Text(exercise as? String ?? "Unknown Exercise")
+        List{
+            ForEach(userDict.keys.sorted(), id:\.self){user in
+                if let data = userDict[user] as? [String:Any]{
+                    if user == username{
+                        ForEach(data.keys.sorted(), id:\.self){exercise in
+                            if(data[exercise] == true){
+                                Text(exercise)
                             }
                         }
                     }
                 }
+            }
+        }
+        HStack{
+            Text("GHi")
+        }
 
     }
+        
+
 }
 
