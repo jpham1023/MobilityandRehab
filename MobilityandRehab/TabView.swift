@@ -35,7 +35,7 @@ struct tabBar: View{
             }
             .tag("SignUp")
             .tabItem{
-                Image(systemName: "person.circle.fill")
+                Image(systemName: "person.circle.fill") 
             }
         }
     }

@@ -23,18 +23,12 @@ struct MobilityandRehabApp: App {
         WindowGroup {
             //creates the tab screen at the bottom
             
-            
-//            tabBar(currNavigation: $defaultTag)
-//                .environmentObject(viewobject)
-//                .environmentObject(appLogIn)
-//                .environmentObject(userInfoObject)
-//                .environmentObject(authManager)
-            StudentAssignmentView(username:"asleep")
+            tabBar(currNavigation: $defaultTag)
                 .environmentObject(viewobject)
-                           .environmentObject(appLogIn)
-                           .environmentObject(userInfoObject)
-                           .environmentObject(authManager)
-            
+                .environmentObject(appLogIn)
+                .environmentObject(userInfoObject)
+                .environmentObject(authManager)
         }
     }
 }
+

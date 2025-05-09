@@ -25,7 +25,8 @@ struct UserPage: View{
                 if(!userName.isEmpty){
                     Spacer()
                     Text(userName)
-                        .font(.system(size:20))
+                        .font(.system(size:35))
+                        .bold()
                     Spacer()
                         .frame(height:25)
                 }
@@ -59,14 +60,16 @@ struct UserPage: View{
             
             
             //displays button that currently has no purpose
-            ZStack{
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width:400, height:75)
-                    .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
-                Text("Assign Youtube Videos")
-                    .bold()
-                    .foregroundStyle(.white)
-                    .font(.system(size:25))
+            NavigationLink(destination: AssignStudents()){
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width:400, height:75)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    Text("View Student Progress")
+                        .bold()
+                        .foregroundStyle(.white)
+                        .font(.system(size:25))
+                }
             }
             
             //button to log out
