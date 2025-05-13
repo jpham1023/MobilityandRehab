@@ -134,10 +134,15 @@ struct ExerciseVideoView: View{
             }
         }
         .onAppear {
+            print(tapped)
             // Check if the exercise has already been marked as done when the view appears
             Task{
                 tapped = await pullMarkAsDoneInfo(curExercise: Currentexercise.Exercise)
             }
+        }
+        .onChange(of: tapped) { oldValue, newValue in
+           print(newValue)
+            tapped = newValue
         }
     }
     
@@ -155,8 +160,9 @@ struct ExerciseVideoView: View{
                 }
                 else{
                     tapped = false
-                }
 
+                }
+                
             }
         } catch {
             print("Error handling mark as done: \(error)")
@@ -173,10 +179,14 @@ struct ExerciseVideoView: View{
                 print(users)
                 for(key,value) in data{
                     if (key as! String == curExercise){
-                        print("yes")
+                        print(value)
                         if(value as! Bool == true){
+                            print("firebase reads true")
                             tapped = true
                             return true
+                        }
+                        else{
+                            print("Firebase reads false")
                         }
                     }
                 }
