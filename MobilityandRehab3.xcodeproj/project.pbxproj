@@ -26,6 +26,7 @@
 		A72B88E32DBC1E2B00689888 /* AssignStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72B88E22DBC1E2B00689888 /* AssignStudents.swift */; };
 		A72B88E52DBC22A100689888 /* StudentAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72B88E42DBC22A100689888 /* StudentAssignmentView.swift */; };
 		A761E8752DD67738002BD41C /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761E8742DD67738002BD41C /* UserMessage.swift */; };
+		A761E8772DD67E54002BD41C /* UserMessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761E8762DD67E54002BD41C /* UserMessageCenter.swift */; };
 		A76EC94E2D6529C70099FAE3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76EC94D2D6529C70099FAE3 /* UserInfo.swift */; };
 		A77A91EF2D147048005CF5B8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A91EE2D147048005CF5B8 /* AppState.swift */; };
 		ACFE025E2C08F2370073FDE4 /* userSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE025D2C08F2370073FDE4 /* userSettings.swift */; };
@@ -56,6 +57,7 @@
 		A72B88E22DBC1E2B00689888 /* AssignStudents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignStudents.swift; sourceTree = "<group>"; };
 		A72B88E42DBC22A100689888 /* StudentAssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAssignmentView.swift; sourceTree = "<group>"; };
 		A761E8742DD67738002BD41C /* UserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
+		A761E8762DD67E54002BD41C /* UserMessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageCenter.swift; sourceTree = "<group>"; };
 		A76EC94D2D6529C70099FAE3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A77A91EE2D147048005CF5B8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		ACFE025D2C08F2370073FDE4 /* userSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userSettings.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				1196C1ED2B9A27340050E795 /* regionList.swift */,
 				A72B88E22DBC1E2B00689888 /* AssignStudents.swift */,
 				A72B88E42DBC22A100689888 /* StudentAssignmentView.swift */,
+				A761E8762DD67E54002BD41C /* UserMessageCenter.swift */,
 				6900B4B52BFB7DF200CF33F9 /* addVideo.swift */,
 				6968FBFD2C0A0A43009C38A8 /* UserView.swift */,
 				6900B4B12BFB7D3100CF33F9 /* TabView.swift */,
@@ -245,6 +248,7 @@
 				A77A91EF2D147048005CF5B8 /* AppState.swift in Sources */,
 				1196C1EE2B9A27340050E795 /* regionList.swift in Sources */,
 				BE67FD462B35DB5D004C38F1 /* MobilityandRehabApp.swift in Sources */,
+				A761E8772DD67E54002BD41C /* UserMessageCenter.swift in Sources */,
 				BE67FD542B35E1D7004C38F1 /* ExerciseModel.swift in Sources */,
 				D90C06342B6D52E700667E60 /* ExerciseView.swift in Sources */,
 				4A4E217D2B6D51C100A40944 /* JointView.swift in Sources */,

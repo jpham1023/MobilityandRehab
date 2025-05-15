@@ -31,6 +31,7 @@ struct userSettings: View{
     @StateObject var adminViewmodel = UserViewmodel()
     @StateObject var signinviewmodel = signInViewmodel()
     @EnvironmentObject var authManager: AuthenticationManager
+    @EnvironmentObject var userMessageObj: UserMessage
     @EnvironmentObject var appState: AppState
     @State var showAlert = false
     @State var showResetText = false
@@ -38,6 +39,7 @@ struct userSettings: View{
     @State var showErrorAlert = false
     @State var userName:String = ""
     @State var showConfirmReset = false
+    @State var showSheet = false
     var body: some View{
         ScrollView{
             Spacer()
@@ -63,15 +65,29 @@ struct userSettings: View{
                     await getUserName()
                 }
             }
+            Button {
+                showSheet = true
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width:400, height:75)
+                        .foregroundStyle(Color(red: 253/255, green: 102/255, blue: 26/255))
+                    Text("View Assignments")
+                        .foregroundStyle(.white)
+                        .font(.system(size:30))
+                        .bold()
+                }
+            }
+            .sheet(isPresented: $showSheet, onDismiss: {
+                showSheet = false
+            }, content: {
+                MessageCenter()
+            })
+
             Button(action: {
                 Task{
-                    do{
                         showAlert = true
-                        
-                    }
-                    catch{
-                        errorText = "Unable to log out"
-                    }
+                    
                 }
             }, label: {
                 ZStack{

@@ -152,7 +152,7 @@ struct StudentAssignmentView: View {
         }
         
     func putUserMesssageToFirebase() async{
-        let message = "Hi there! Please watch " + chooseExercise + "\n " + message
+        let message = "Hi there! Please watch " + chooseExercise + "/n " + message
         try await userMessageObj.addUserToFirebase(currentUser: username, message: message, exercise: chooseExercise)
         
         

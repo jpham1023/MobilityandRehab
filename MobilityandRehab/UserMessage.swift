@@ -29,10 +29,11 @@ class UserMessage: ObservableObject{
         let databaseref = Database.database().reference().child("UserMessages")
         databaseref.getData{ myError, myDataSnapshot in
             for users in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
-                print(users)
-                var tempUserDict: [String:Bool] = [:]
+                var tempUserDict: [String:String] = [:]
                 let username = users.key
-                guard let userInfo = users.value as? [String: Bool] else {return}
+                print("---")
+                print(users.value)
+                guard let userInfo = users.value as? [String: String] else {return}
                 for messages in userInfo{
                     let message = messages.value
                     tempUserDict["messge"] = message
