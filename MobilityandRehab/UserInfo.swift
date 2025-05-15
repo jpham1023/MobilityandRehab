@@ -21,6 +21,7 @@ class UserInfoViewmodel: ObservableObject{
         let exerciseName = userData.exercise as String
         let watched = userData.watched as Bool
         let userInfo:[String:Bool] = [exerciseName: watched]
+        print("called")
         databaseref.child("Users").child(currentUser as String).updateChildValues(userInfo)
         pullUserData()
     }

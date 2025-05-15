@@ -1,0 +1,51 @@
+//
+//  UserInfo.swift
+//  MobilityandRehab
+//
+//  Created by Quyen T. Pham on 2/18/25.
+//
+
+import Foundation
+import SwiftUI
+import FirebaseDatabase
+import FirebaseDatabaseSwift
+
+class UserMessage: ObservableObject{
+    @Published var userMessage:[String:NSDictionary] = [:]
+    init(){
+        pullUserData()
+    }
+    
+    func addUserToFirebase(currentUser:String, message: String, exercise:String){
+        let databaseref = Database.database().reference()
+        let dict = [exercise: message] as [String: String]
+        databaseref.child("UserMessages").child(currentUser as String).updateChildValues(dict)
+        pullUserData()
+    }
+    
+    
+    func pullUserData(){
+        var tempDict: [String: NSDictionary] = [:]
+        let databaseref = Database.database().reference().child("UserMessages")
+        databaseref.getData{ myError, myDataSnapshot in
+            for users in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
+                print(users)
+                var tempUserDict: [String:Bool] = [:]
+                let username = users.key
+                guard let userInfo = users.value as? [String: Bool] else {return}
+                for messages in userInfo{
+                    let message = messages.value
+                    tempUserDict["messge"] = message
+                }
+                tempDict[username] = tempUserDict as NSDictionary
+           }
+            
+            self.userMessage = tempDict
+        }
+    }
+    
+}
+
+
+
+

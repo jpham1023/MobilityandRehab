@@ -37,6 +37,8 @@ struct SignInView: View {
     @StateObject var adminViewmodel = UserViewmodel()
     @State private var currentNav:String = "one"
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var userInfoObject: UserInfoViewmodel
+    @EnvironmentObject var userMessageObject: UserMessage
     
     var body: some View {
         Image(systemName: "person.badge.plus")
@@ -77,6 +79,13 @@ struct SignInView: View {
                                 if let userEmail = Auth.auth().currentUser?.email{
                                     if adminViewmodel.adminArray.contains(userEmail) {
                                         appState.educatorLogIn = true
+                                    }
+                                    if let atRange = userEmail.range(of:"@"){
+                                        let name = userEmail[..<atRange.lowerBound] //get name from email
+                                        let userInfo = UserInfoModel(exercise: "Ankle Mobility", watched: false)
+                                        await userInfoObject.addUserToFirebase(currentUser: String(name), userData: userInfo)
+                                        await userMessageObject.addUserToFirebase(currentUser: String(name), message: "Welcome", exercise: "Mobility and Rehab")
+                                        print("success")
                                     }
                                 }
                                 

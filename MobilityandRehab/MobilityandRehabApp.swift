@@ -19,6 +19,7 @@ struct MobilityandRehabApp: App {
     @StateObject var viewobject:RehabViewmodel = RehabViewmodel()
     @StateObject var userInfoObject:UserInfoViewmodel = UserInfoViewmodel()
     @StateObject var authManager:AuthenticationManager = AuthenticationManager()
+    @StateObject var userMessageObject:UserMessage = UserMessage()
     var body: some Scene {
         WindowGroup {
             //creates the tab screen at the bottom
@@ -28,6 +29,7 @@ struct MobilityandRehabApp: App {
                 .environmentObject(appLogIn)
                 .environmentObject(userInfoObject)
                 .environmentObject(authManager)
+                .environmentObject(userMessageObject)
         }
     }
 }
