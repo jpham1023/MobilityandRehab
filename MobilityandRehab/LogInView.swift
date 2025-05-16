@@ -39,7 +39,7 @@ struct LogInView: View {
                     Text("Success!")
                 }
                 Button(action: {
-                    if !signinviewmodel.email.contains("@") || !signinviewmodel.email.contains("."){
+                    if !signinviewmodel.email.contains("@") || !signinviewmodel.email.contains(".") || signinviewmodel.email.count < 5{
                         showEmailError = true
                     }
                     else{

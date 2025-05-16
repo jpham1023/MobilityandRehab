@@ -15,6 +15,7 @@ struct StudentAssignmentView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var userMessageObj: UserMessage
     @EnvironmentObject var viewobject:RehabViewmodel
+    @State var success = false
     @State var selectedTab = 0
     @State var message = ""
     @State var chooseExercise = "Pick an exercise"
@@ -132,6 +133,9 @@ struct StudentAssignmentView: View {
                 Button {
                     Task{
                         await putUserMesssageToFirebase()
+                        success = true
+                        chooseExercise = "Pick an exercise"
+                        message = ""
                     }
                 } label: {
                     ZStack{
@@ -144,6 +148,16 @@ struct StudentAssignmentView: View {
                     }
                 }
                 .frame(width:500)
+                if success{
+                    Text("sent!")
+                        .foregroundStyle(.green)
+                        .onAppear {
+                            // Show the message for 2 seconds
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                success = false
+                            }
+                        }
+                }
                 Spacer()
 
                 
@@ -152,7 +166,7 @@ struct StudentAssignmentView: View {
         }
         
     func putUserMesssageToFirebase() async{
-        let message = "Hi there! Please watch " + chooseExercise + "/n " + message
+        let message = "Hi there! Please watch " + chooseExercise + " \n " + message
         try await userMessageObj.addUserToFirebase(currentUser: username, message: message, exercise: chooseExercise)
         
         

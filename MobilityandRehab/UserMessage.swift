@@ -23,6 +23,13 @@ class UserMessage: ObservableObject{
         pullUserData()
     }
     
+    func removeMessage(key: String, currentUser:String){
+            let databaseref = Database.database().reference()
+            databaseref.child("UserMessages").child(currentUser as String).child(key).removeValue()
+          pullUserData()
+        }
+        
+
     
     func pullUserData(){
         var tempDict: [String: NSDictionary] = [:]
@@ -31,12 +38,12 @@ class UserMessage: ObservableObject{
             for users in myDataSnapshot?.children.allObjects as! [DataSnapshot]{
                 var tempUserDict: [String:String] = [:]
                 let username = users.key
-                print("---")
-                print(users.value)
                 guard let userInfo = users.value as? [String: String] else {return}
+                print(userInfo)
                 for messages in userInfo{
                     let message = messages.value
-                    tempUserDict["messge"] = message
+                    let exercise = messages.key
+                    tempUserDict[exercise] = message
                 }
                 tempDict[username] = tempUserDict as NSDictionary
            }
