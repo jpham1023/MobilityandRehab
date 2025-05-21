@@ -21,7 +21,7 @@ struct ExerciseList: View {
                         HStack {
                             NavigationLink(destination:ExerciseView(exerciseName: currentExercise.Exercise)) {
                                 Text(currentExercise.Exercise)
-                                    .font(.system(size:100))
+                                    .font(.system(size:80))
                                     .font(.title)
                                     .foregroundStyle(.white)
                                     .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.2), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: 10, y: 10)
@@ -35,7 +35,7 @@ struct ExerciseList: View {
                         .listRowBackground(Color(red: 253/255, green: 102/255, blue: 26/255))
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(height:80)
                 .background(Color(red: 253/255, green: 102/255, blue: 26/255))
                 .ignoresSafeArea()
             }
